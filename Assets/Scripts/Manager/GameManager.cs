@@ -3,9 +3,11 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+	public Joker joker;
+	public Person person;
 	// Speech[] speech; 存储整个关卡的演讲内容；每个成员是一句话；每句话是一个数组／List，存储音节成员
 	// int nextSentenceIndex; 当前进行到的话的 Index
-	//
+
 
 	void Awake ()
 	{
@@ -14,7 +16,7 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
-		
+		OnSpeech ();
 	}
 
 	void Update ()
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
 	
 	}
 
-	private static GameManager gameManager;
+	private static GameManager gameManager = null;
 
 	public static GameManager instance {
 		get {
@@ -57,14 +59,33 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+
+	private static AudioSource _audio = null;
+
+	public static new AudioSource audio {
+		get {
+			if (_audio == null) {
+				_audio = Camera.main.GetComponent<AudioSource> ();
+			}
+			return _audio;
+		}
+	}
+
 	void OnSpeech ()
 	{
 		// 读取下一句话，调用 SpeechManager 显示出来
+		Person.inSpeech = true;
+		speechManager.ShowNextSentence ();
+
+		Debug.Log ("Speech Start!");
 	}
 
 	public void EndSpeech ()
 	{
 		// 演讲结束，延时，并进行下一步行动
+		Person.inSpeech = false;
+
+		Debug.Log ("Speech End!");
 	}
 
 	void OnWave ()

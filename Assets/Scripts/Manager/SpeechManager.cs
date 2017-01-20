@@ -1,15 +1,31 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SpeechManager : MonoBehaviour
 {
-	// Sentence sentence; 当回合要说的话，每个成员是一个音节
-	// int nextWordIndex;
-	// float timer; 用于控制显示这句话的计时器
+	public Speech speech;
+
+	Sentence currentSentence;
+	Word currentWord;
+
+	int nextSentenceID;
+	int nextWordID;
+
+	float startTime;
+	float timer;
+
+	public Transform wordStartMark;
+	public Transform wordGroupHide;
+	public Transform wordGroup;
+	public GameObject wordItemPrefab;
+	List<Transform> wordItemsHide = new List<Transform>();
+	List<Transform> wordItems = new List<Transform>();
 
 	void Start ()
 	{
-		// 初始化
+		nextSentenceID = 0;
 	}
 
 	void Update ()
@@ -23,8 +39,56 @@ public class SpeechManager : MonoBehaviour
 
 	}
 
-	void ShowWord (Word word)
+	public void ShowNextSentence ()
+	{
+		currentSentence = speech [nextSentenceID++];
+		nextWordID = 0;
+
+//		startTime = Time.time;
+//		timer = 0;
+
+		foreach (Word word in currentSentence) {
+			var item = Instantiate (wordItemPrefab, wordGroupHide) as GameObject;
+			wordItemsHide.Add (item.transform);
+
+			item.GetComponentInChildren<Text> ().text = word.text;
+
+			Invoke ("ShowWord", word.time);
+		}
+
+		var lastWord = currentSentence.LastWord;
+		float delay = 0.5f;
+		Invoke ("EndSpeech", lastWord.time + delay);
+	}
+
+	void ShowWord ()
 	{
 		// 显示单词 播放动画
+		currentWord = currentSentence [nextWordID];
+		if (currentWord.clip) {
+			GameManager.audio.PlayOneShot (currentWord.clip);
+		}
+
+		var itemHide = wordItemsHide [nextWordID];
+		nextWordID++;
+
+		var item = Instantiate (wordItemPrefab, wordGroup) as GameObject;
+		wordItems.Add (item.transform);
+
+		item.GetComponentInChildren<Text> ().text = currentWord.text;
+		var posTween = item.GetComponent<PositionTween> ();
+		posTween.from = wordStartMark.localPosition;
+		posTween.to = itemHide.localPosition;
+
+		foreach (BaseTween tween in item.GetComponents<BaseTween>()) {
+			tween.ResetTween ();
+			tween.Play ();
+		}
+
+	}
+
+	void EndSpeech()
+	{
+		GameManager.instance.EndSpeech ();
 	}
 }

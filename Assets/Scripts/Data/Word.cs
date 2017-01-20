@@ -5,6 +5,6 @@ using System.Collections;
 public class Word
 {
 	public string text;
-	public string time;
-
+	public float time;
+	public AudioClip clip;
 }
