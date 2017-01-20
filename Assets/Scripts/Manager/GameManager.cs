@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 	// Speech[] speech; 存储整个关卡的演讲内容；每个成员是一句话；每句话是一个数组／List，存储音节成员
 	// int nextSentenceIndex; 当前进行到的话的 Index
 
+	public static int peopleCount = 0;
+	public static int riseCount = 0;
+
 
 	void Awake ()
 	{
