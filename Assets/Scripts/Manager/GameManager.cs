@@ -59,6 +59,17 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	private static CursorManager _cursorMgr = null;
+
+	public static CursorManager cursorManager {
+		get {
+			if (_cursorMgr == null) {
+				_cursorMgr = GameObject.Find("UICanvas/CursorPanel/Cursor").GetComponent<CursorManager> ();
+			}
+			return _cursorMgr;
+		}
+	}
+
 
 	private static AudioSource _audio = null;
 
@@ -86,15 +97,34 @@ public class GameManager : MonoBehaviour
 		Person.inSpeech = false;
 
 		Debug.Log ("Speech End!");
+
+		OnTransformToNote ();
+	}
+
+	void OnTransformToNote ()
+	{
+		speechManager.TransformToNote ();
+
+		Debug.Log ("Transform Start!");
+	}
+
+	public void EndTransformToNote ()
+	{
+		Debug.Log ("Transform End!");
+
+		OnWave ();
 	}
 
 	void OnWave ()
 	{
-		// 人浪环节，调用 WaveManager
+		speechManager.StartWave ();
+
+		Debug.Log ("Wave Start!");
 	}
 
 	public void EndWave ()
 	{
+		Debug.Log ("Wave End!");
 		// 结束人浪环节，延时，并进行下一步行动
 	}
 

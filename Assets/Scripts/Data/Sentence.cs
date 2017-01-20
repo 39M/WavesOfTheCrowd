@@ -1,12 +1,19 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class Sentence : IEnumerator, IEnumerable
+public class Sentence : IEnumerable
 {
+	public float totalTime;
 	public List<Word> words;
-	int position = -1;
+
+	public int Count {
+		get {
+			return words.Count;
+		}
+	}
 
 	public Word LastWord {
 		get {
@@ -24,26 +31,50 @@ public class Sentence : IEnumerator, IEnumerable
 		}
 	}
 
+	//private enumerator class
+	private class MyEnumerator : IEnumerator
+	{
+		public List<Word> words;
+		int position = -1;
+
+		//constructor
+		public MyEnumerator (List<Word> words)
+		{
+			this.words = words;
+		}
+
+		private IEnumerator getEnumerator ()
+		{
+			return (IEnumerator)this;
+		}
+
+		//IEnumerator
+		public bool MoveNext ()
+		{
+			position++;
+			return (position < words.Count);
+		}
+
+		//IEnumerator
+		public void Reset ()
+		{
+			position = -1;
+		}
+
+		//IEnumerator
+		public object Current {
+			get { 
+				try {
+					return words [position];
+				} catch (IndexOutOfRangeException) {
+					throw new InvalidOperationException ();
+				}
+			}
+		}
+	}
+
 	public IEnumerator GetEnumerator ()
 	{
-		return (IEnumerator)this;
-	}
-
-	//IEnumerator
-	public bool MoveNext ()
-	{
-		position++;
-		return (position < words.Count);
-	}
-
-	//IEnumerable
-	public void Reset ()
-	{
-		position = 0;
-	}
-
-	//IEnumerable
-	public object Current {
-		get { return words [position]; }
+		return new MyEnumerator (words);
 	}
 }

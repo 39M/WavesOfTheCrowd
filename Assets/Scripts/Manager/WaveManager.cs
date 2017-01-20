@@ -3,10 +3,21 @@ using System.Collections;
 
 public class WaveManager : MonoBehaviour
 {
-	// Sentence sentence; 当回合要说的话，每个成员是一个音节
-	// int nextWordIndex;
-	// GameObject scanline; 扫描线
-	//
+	Sentence sentence;
+	Word currentWord;
+
+	int nextWordID;
+
+	float startTime;
+	float timer;
+
+	bool onWave;
+
+	float cursorSizeMax = 250f;
+	float cursorSizeMin = 75f;
+
+	float clickTimeRange = 0.25f;
+
 
 	void Start ()
 	{
@@ -15,11 +26,58 @@ public class WaveManager : MonoBehaviour
 
 	void Update ()
 	{
-		// 移动扫描线
+		if (onWave) {
+			timer = Time.time - startTime;
 
-		if (Input.anyKeyDown) {
-			// Input.mousePosition
-			// 将鼠标位置 圆圈范围 发给 Joker 进行判断
+			if (timer >= sentence.totalTime) {
+				EndWave ();
+				return;
+			}
+
+			float cursorSize = Mathf.Clamp (
+				                   cursorSizeMax - Mathf.Abs (currentWord.time - timer) / clickTimeRange * (cursorSizeMax - cursorSizeMin),
+				                   cursorSizeMin,
+				                   cursorSizeMax
+			                   );
+			CursorManager.cursorSize = cursorSize;
+
+			if (timer - currentWord.time > clickTimeRange) {
+//				GameManager.audio.PlayOneShot (currentWord.clip);
+				if (nextWordID < sentence.Count) {
+					currentWord = sentence [nextWordID++];
+				}
+			}
+
+			//		var cursor = Texture2D.whiteTexture;
+			//		cursor.Resize ((int)Time.time, (int)Time.time);
+			//		Cursor.SetCursor (cursor, Vector2.zero, CursorMode.Auto);
+			
+			if (Input.anyKeyDown) {
+				// Input.mousePosition, cursorSize
+				// 将鼠标位置 圆圈范围 发给 Joker 进行判断
+
+			}
 		}
+	}
+
+	public void StartWave (Sentence sentence)
+	{
+		this.sentence = sentence;
+		nextWordID = 0;
+		currentWord = sentence [0];
+
+		startTime = Time.time;
+
+		onWave = true;
+
+		GameManager.cursorManager.ShowCursor ();
+	}
+
+	void EndWave ()
+	{
+		onWave = false;
+
+		GameManager.cursorManager.HideCursor ();
+		GameManager.speechManager.EndWave ();
 	}
 }

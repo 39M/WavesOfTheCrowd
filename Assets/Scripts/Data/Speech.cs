@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class Speech : IEnumerator, IEnumerable
+public class Speech : IEnumerable
 {
 	public List<Sentence> sentences;
-	int position = -1;
 
 	public Sentence this [int index] {
 		get {
@@ -18,26 +18,50 @@ public class Speech : IEnumerator, IEnumerable
 		}
 	}
 
+	//private enumerator class
+	private class MyEnumerator : IEnumerator
+	{
+		public List<Sentence> sentences;
+		int position = -1;
+
+		//constructor
+		public MyEnumerator (List<Sentence> sentences)
+		{
+			this.sentences = sentences;
+		}
+
+		private IEnumerator getEnumerator ()
+		{
+			return (IEnumerator)this;
+		}
+
+		//IEnumerator
+		public bool MoveNext ()
+		{
+			position++;
+			return (position < sentences.Count);
+		}
+
+		//IEnumerator
+		public void Reset ()
+		{
+			position = -1;
+		}
+
+		//IEnumerator
+		public object Current {
+			get { 
+				try {
+					return sentences [position];
+				} catch (IndexOutOfRangeException) {
+					throw new InvalidOperationException ();
+				}
+			}
+		}
+	}
+
 	public IEnumerator GetEnumerator ()
 	{
-		return (IEnumerator)this;
-	}
-
-	//IEnumerator
-	public bool MoveNext ()
-	{
-		position++;
-		return (position < sentences.Count);
-	}
-
-	//IEnumerable
-	public void Reset ()
-	{
-		position = 0;
-	}
-
-	//IEnumerable
-	public object Current {
-		get { return sentences [position]; }
+		return new MyEnumerator (sentences);
 	}
 }

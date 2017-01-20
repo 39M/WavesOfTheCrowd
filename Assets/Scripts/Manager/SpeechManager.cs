@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 public class SpeechManager : MonoBehaviour
 {
-	public Speech speech;
-
 	Sentence currentSentence;
 	Word currentWord;
 
@@ -20,8 +18,17 @@ public class SpeechManager : MonoBehaviour
 	public Transform wordGroupHide;
 	public Transform wordGroup;
 	public GameObject wordItemPrefab;
-	List<Transform> wordItemsHide = new List<Transform>();
-	List<Transform> wordItems = new List<Transform>();
+	List<Transform> wordItemsHide = new List<Transform> ();
+	List<Transform> wordItems = new List<Transform> ();
+
+	public Transform noteBar;
+	public Transform noteGroup;
+	public float noteBarLength;
+	public Transform scanLine;
+
+
+
+	public Speech speech;
 
 	void Start ()
 	{
@@ -57,7 +64,7 @@ public class SpeechManager : MonoBehaviour
 		}
 
 		var lastWord = currentSentence.LastWord;
-		float delay = 0.5f;
+		float delay = 1f;
 		Invoke ("EndSpeech", lastWord.time + delay);
 	}
 
@@ -70,7 +77,6 @@ public class SpeechManager : MonoBehaviour
 		}
 
 		var itemHide = wordItemsHide [nextWordID];
-		nextWordID++;
 
 		var item = Instantiate (wordItemPrefab, wordGroup) as GameObject;
 		wordItems.Add (item.transform);
@@ -85,10 +91,72 @@ public class SpeechManager : MonoBehaviour
 			tween.Play ();
 		}
 
+		nextWordID++;
 	}
 
-	void EndSpeech()
+	void EndSpeech ()
 	{
 		GameManager.instance.EndSpeech ();
+	}
+
+	public void TransformToNote ()
+	{
+		nextWordID = 0;
+
+		foreach (Word word in currentSentence) {
+			Invoke ("TransformNext", word.time / 2f);
+		}
+
+		Invoke ("EndTransform", currentSentence.LastWord.time / 2 + 1);
+	}
+
+	void TransformNext ()
+	{
+		var item = wordItems [nextWordID];
+		item.SetParent (noteGroup);
+		item.Find ("Text").gameObject.SetActive (false);
+		item.Find ("Note").gameObject.SetActive (true);
+
+		var posTween = item.GetComponent<PositionTween> ();
+		posTween.from = item.localPosition;
+
+		var posTo = Vector3.zero;
+		var word = currentSentence [nextWordID];
+		posTo.x = (word.time / currentSentence.totalTime - 0.5f) * noteBarLength;
+		posTween.to = posTo;
+
+		posTween.Play ();
+
+		nextWordID++;
+	}
+
+	void EndTransform ()
+	{
+		GameManager.instance.EndTransformToNote ();
+	}
+
+	public void StartWave ()
+	{
+		var posTween = scanLine.GetComponent<PositionTween> ();
+
+		var posFrom = Vector3.zero;
+		posFrom.x = -noteBarLength / 2f;
+		posTween.from = posFrom;
+
+		var posTo = Vector3.zero;
+		posTo.x = noteBarLength / 2f;
+		posTween.to = posTo;
+
+		posTween._duration = currentSentence.totalTime;
+
+		posTween.ResetTween ();
+		posTween.Play ();
+
+		GameManager.waveManager.StartWave (currentSentence);
+	}
+
+	public void EndWave()
+	{
+		GameManager.instance.EndWave ();
 	}
 }
