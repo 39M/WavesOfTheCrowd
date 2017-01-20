@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 	public Person person;
 	// Speech[] speech; 存储整个关卡的演讲内容；每个成员是一句话；每句话是一个数组／List，存储音节成员
 	// int nextSentenceIndex; 当前进行到的话的 Index
+	public SpeechData speechData;
 
 	public static int peopleCount = 0;
 	public static int riseCount = 0;
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
 	void Awake ()
 	{
 		gameManager = this;
+		speechManager.speech = speechData.speech;
 	}
 
 	void Start ()
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
 	public static CursorManager cursorManager {
 		get {
 			if (_cursorMgr == null) {
-				_cursorMgr = GameObject.Find("UICanvas/CursorPanel/Cursor").GetComponent<CursorManager> ();
+				_cursorMgr = GameObject.Find ("UICanvas/CursorPanel/Cursor").GetComponent<CursorManager> ();
 			}
 			return _cursorMgr;
 		}
@@ -87,57 +89,77 @@ public class GameManager : MonoBehaviour
 
 	void OnSpeech ()
 	{
-		// 读取下一句话，调用 SpeechManager 显示出来
 		Person.inSpeech = true;
-		speechManager.ShowNextSentence ();
 
 		Debug.Log ("Speech Start!");
+
+		speechManager.ShowNextSentence ();
 	}
 
 	public void EndSpeech ()
 	{
-		// 演讲结束，延时，并进行下一步行动
 		Person.inSpeech = false;
 
 		Debug.Log ("Speech End!");
 
-		OnTransformToNote ();
+		switch (speechManager.currentSentence.type) {
+		case Sentence.Types.Normal:
+			OnTransformToNote ();
+			break;
+		case Sentence.Types.High:
+			break;
+		case Sentence.Types.Wrong:
+			break;
+		}
 	}
 
 	void OnTransformToNote ()
 	{
-		speechManager.TransformToNote ();
-
 		Debug.Log ("Transform Start!");
+		
+		speechManager.TransformToNote ();
 	}
 
 	public void EndTransformToNote ()
 	{
 		Debug.Log ("Transform End!");
 
-		OnWave ();
+		switch (speechManager.currentSentence.type) {
+		case Sentence.Types.Normal:
+			OnWave ();
+			break;
+		case Sentence.Types.High:
+			break;
+		case Sentence.Types.Wrong:
+			break;
+		}
 	}
 
 	void OnWave ()
 	{
-		speechManager.StartWave ();
-
 		Debug.Log ("Wave Start!");
+
+		speechManager.StartWave ();
 	}
 
 	public void EndWave ()
 	{
 		Debug.Log ("Wave End!");
-		// 结束人浪环节，延时，并进行下一步行动
+
+		switch (speechManager.currentSentence.type) {
+		case Sentence.Types.Normal:
+			OnSpeech ();
+			break;
+		case Sentence.Types.High:
+			break;
+		case Sentence.Types.Wrong:
+			break;
+		}
 	}
 
-	void NextMove ()
-	{
-		// 进行下一步行动
-	}
-
-	void OnEndLevel ()
+	public void EndLevel ()
 	{
 		// 关卡结束时的操作
+		Debug.Log ("Level End!");
 	}
 }

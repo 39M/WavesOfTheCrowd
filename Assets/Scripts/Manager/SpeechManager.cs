@@ -5,11 +5,15 @@ using System.Collections.Generic;
 
 public class SpeechManager : MonoBehaviour
 {
-	Sentence currentSentence;
+	public Speech speech;
+	public Sentence currentSentence;
+	[SerializeField]
 	Word currentWord;
 
-	int nextSentenceID;
-	int nextWordID;
+	[SerializeField]
+	int nextSentenceID = 0;
+	[SerializeField]
+	int nextWordID = 0;
 
 	float startTime;
 	float timer;
@@ -26,29 +30,26 @@ public class SpeechManager : MonoBehaviour
 	public float noteBarLength;
 	public Transform scanLine;
 
-
-
-	public Speech speech;
-
 	void Start ()
 	{
-		nextSentenceID = 0;
+		
 	}
 
 	void Update ()
 	{
-		// 赋值 timer
-		// 判断下一个单词的出现时机和 timer 
-		// Y: ShowWord(nextWord)
-		// N: pass
-
-		// 如果已经显示了最后一个单词，则告知 GameManager 结束
-
+		
 	}
 
 	public void ShowNextSentence ()
 	{
-		currentSentence = speech [nextSentenceID++];
+		if (nextSentenceID >= speech.Count) {
+			GameManager.instance.EndLevel ();
+			return;
+		}
+
+		ClearLastSentence ();
+
+		currentSentence = speech [nextSentenceID];
 		nextWordID = 0;
 
 //		startTime = Time.time;
@@ -63,9 +64,10 @@ public class SpeechManager : MonoBehaviour
 			Invoke ("ShowWord", word.time);
 		}
 
-		var lastWord = currentSentence.LastWord;
-		float delay = 1f;
-		Invoke ("EndSpeech", lastWord.time + delay);
+		Invoke ("EndSpeech", currentSentence.totalTime);
+
+		nextSentenceID++;
+		Debug.Log (this.nextSentenceID);
 	}
 
 	void ShowWord ()
@@ -92,6 +94,19 @@ public class SpeechManager : MonoBehaviour
 		}
 
 		nextWordID++;
+	}
+
+	void ClearLastSentence ()
+	{
+		foreach (var item in wordItemsHide) {
+			Destroy (item.gameObject);
+		}
+		wordItemsHide.Clear ();
+
+		foreach (var item in wordItems) {
+			Destroy (item.gameObject);
+		}
+		wordItems.Clear ();
 	}
 
 	void EndSpeech ()
@@ -155,7 +170,7 @@ public class SpeechManager : MonoBehaviour
 		GameManager.waveManager.StartWave (currentSentence);
 	}
 
-	public void EndWave()
+	public void EndWave ()
 	{
 		GameManager.instance.EndWave ();
 	}

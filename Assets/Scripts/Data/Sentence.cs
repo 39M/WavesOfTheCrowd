@@ -6,6 +6,14 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Sentence : IEnumerable
 {
+	public enum Types
+	{
+		Normal,
+		High,
+		Wrong,
+	};
+
+	public Types type;
 	public float totalTime;
 	public List<Word> words;
 

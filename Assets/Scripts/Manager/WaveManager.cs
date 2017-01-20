@@ -30,6 +30,8 @@ public class WaveManager : MonoBehaviour
 			timer = Time.time - startTime;
 
 			if (timer >= sentence.totalTime) {
+//				onWave = false;
+//				Invoke ("EndWave", 1);
 				EndWave ();
 				return;
 			}

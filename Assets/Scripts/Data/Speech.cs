@@ -8,6 +8,12 @@ public class Speech : IEnumerable
 {
 	public List<Sentence> sentences;
 
+	public int Count {
+		get {
+			return sentences.Count;
+		}
+	}
+
 	public Sentence this [int index] {
 		get {
 			return sentences [index];
