@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
+		Joker.Create ();
 		Person.Create (20);
 		OnSpeech ();
 	}
@@ -48,8 +49,12 @@ public class GameManager : MonoBehaviour
 		case Status.InTransform:
 			break;
 		case Status.InWave:
-			if (Input.GetMouseButton (0)) {
-				Joker.High (CursorManager.mousePosition, CursorManager.cursorSize);
+			if (Input.GetMouseButtonDown (0)) {
+				if (waveManager.highTime > 0) {
+					waveManager.highTime--;
+					Person.attractPeople = 0;
+					Joker.High (CursorManager.mousePosition, CursorManager.cursorSize);
+				}
 			}
 			break;
 		}

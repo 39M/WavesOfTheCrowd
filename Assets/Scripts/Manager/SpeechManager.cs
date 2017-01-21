@@ -185,25 +185,38 @@ public class SpeechManager : MonoBehaviour
 		var posTween = item.GetComponent<PositionTween> ();
 		posTween.from = item.localPosition;
 
-		if (word.interrupted) {
-			// TODO 飞到人群中爆炸
-			posTween.to = RandomPositionInPeople ();
+		if (word.interrupted || word.dirty) {
+			var newItem = (Instantiate (item.gameObject, wordGroup) as GameObject).transform;
+			var newPosTween = newItem.GetComponent<PositionTween> ();
 
-		} else if (word.dirty) {
-			var text = item.Find ("Text").GetComponent<Text> ();
-			text.color = Color.red;
-			// TODO 飞到人群中爆炸
-			posTween.to = RandomPositionInPeople ();
+			if (word.dirty) {
+				var text = newItem.Find ("Text").GetComponent<Text> ();
+				text.color = Color.red;
+				// TODO 飞到人群中爆炸(大)
+				newPosTween.onComplete = () => {
+					Debug.Log ("Big Bang");
+					Destroy(newItem.gameObject);
+				};
+			} else {
+				// TODO 飞到人群中爆炸（小）
+				newPosTween.onComplete = () => {
+					Debug.Log("Small Bang");
+					Destroy(newItem.gameObject, 1f);
+				};
+			}
 
-		} else {
-			item.SetParent (noteGroup);
-			item.Find ("Text").gameObject.SetActive (false);
-			item.Find ("Note").gameObject.SetActive (true);
-			
-			var posTo = Vector3.zero;
-			posTo.x = (word.time / currentSentence.totalTime - 0.5f) * noteBarLength;
-			posTween.to = posTo;
+			newPosTween.from = newItem.localPosition;
+			newPosTween.to = RandomPositionInPeople ();
+			newPosTween.Play ();
 		}
+
+		item.SetParent (noteGroup);
+		item.Find ("Text").gameObject.SetActive (false);
+		item.Find ("Note").gameObject.SetActive (true);
+			
+		var posTo = Vector3.zero;
+		posTo.x = (word.time / currentSentence.totalTime - 0.5f) * noteBarLength;
+		posTween.to = posTo;
 
 		posTween.Play ();
 
