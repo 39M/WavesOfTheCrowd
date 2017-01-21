@@ -119,7 +119,7 @@ public class SpeechManager : MonoBehaviour
 			itemHide.GetComponentInChildren<Text> ().text = badString;
 			LayoutRebuilder.ForceRebuildLayoutImmediate (wordGroupHide.GetComponent<RectTransform> ());
 
-			text.DOText(badString, 1f, true, ScrambleMode.All);
+			text.DOText (badString, 1f, true, ScrambleMode.All);
 		}
 
 		switch (currentSentence.type) {
@@ -179,17 +179,16 @@ public class SpeechManager : MonoBehaviour
 		var posTween = item.GetComponent<PositionTween> ();
 		posTween.from = item.localPosition;
 
-		// TODO 逻辑待优化
-		if (word.dirty) {
-			if (word.interrupted) {
-				// TODO 飞到人群中爆炸
-				posTween.to = Vector3.up * 200;
-			} else {
-				var text = item.Find ("Text").GetComponent<Text> ();
-				text.color = Color.red;
-				// TODO 飞到人群中爆炸
-				posTween.to = Vector3.up * 200;
-			}
+		if (word.interrupted) {
+			// TODO 飞到人群中爆炸
+			posTween.to = Vector3.up * 200;
+
+		} else if (word.dirty) {
+			var text = item.Find ("Text").GetComponent<Text> ();
+			text.color = Color.red;
+			// TODO 飞到人群中爆炸
+			posTween.to = Vector3.up * 200;
+
 		} else {
 			item.SetParent (noteGroup);
 			item.Find ("Text").gameObject.SetActive (false);
