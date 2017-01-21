@@ -31,7 +31,6 @@ public class SpeechManager : MonoBehaviour
 	public Transform noteGroup;
 	[SerializeField]
 	float noteBarLength;
-	public AudioClip interrupt;
 
 	public Sprite banner;
 
@@ -243,6 +242,10 @@ public class SpeechManager : MonoBehaviour
 		});
 
 		GameManager.waveManager.StartWave (currentSentence);
+
+		if (currentSentence.interrupted) {
+			GameManager.audio.PlayOneShot (GameManager.instance.audioClipData.booed);
+		}
 	}
 
 	public void EndWave ()
