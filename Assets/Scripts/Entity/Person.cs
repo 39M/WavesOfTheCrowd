@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(Animator))]
 public class Person : MonoBehaviour
 {
 	#region Static
@@ -16,14 +17,21 @@ public class Person : MonoBehaviour
 	public static int attractLevel{get{return 5;}}
 	public static int attractPeople;
 
+	public static void Create()
+	{
+		var go=new GameObject( "person "+people.Count );
+		var p=go.AddComponent<Person>();
+		people.Add( p );
+		GameManager.peopleCount=people.Count;
+		GameManager.riseCount=risePeople.Count;
+	}
+
 	public static void RisePerson(Person person)
 	{
 		risePeople.Add( person );
 		if( risePeople.Count/attractLevel-attractPeople>1 )
 		{
-			var go=new GameObject( "person "+people.Count );
-			var p=go.AddComponent<Person>();
-			people.Add( p );
+			Create();
 			//TODO create anim
 			attractPeople+=1;
 		}
@@ -63,6 +71,16 @@ public class Person : MonoBehaviour
 			return sentiment>80;
 		}
 	}
+	Animator _animator;
+	Animator animator
+	{
+		get
+		{
+			if( !_animator )
+				_animator=GetComponent<Animator>();
+			return _animator;
+		}
+	}
 
 	public void SetLocation(Vector2 loc)
 	{
@@ -76,7 +94,8 @@ public class Person : MonoBehaviour
 		//add in high list
 		if( isRise&&!risePeople.Contains( this ) )
 		{
-			RisePerson(this);
+			animator.Play( "rise" );
+			RisePerson( this );
 		}
 	}
 
@@ -84,8 +103,13 @@ public class Person : MonoBehaviour
 	{
 		if( !inSpeech )
 		{
+			var rised=isRise;
 			sentiment-=Time.deltaTime*calm;
 			sentiment=Mathf.Clamp( sentiment, minSenti, maxSenti);
+			if( rised&&!isRise )
+			{
+				animator.Play( "stand" );
+			}
 		}
 	}
 	#endregion

@@ -174,4 +174,17 @@ public class SpeechManager : MonoBehaviour
 	{
 		GameManager.instance.EndWave ();
 	}
+
+
+	static void Import()
+	{
+		var path = UnityEditor.EditorUtility.OpenFilePanel( "", Application.dataPath, "txt" );
+		var file=System.IO.File.ReadAllText( path.Replace( Application.dataPath, "Assets/" ) );
+		if(string.IsNullOrEmpty(file))
+		{
+			return;
+		}
+		var sentences=file.Split( '[' );
+
+	}
 }
