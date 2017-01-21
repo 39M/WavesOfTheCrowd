@@ -11,6 +11,7 @@ public class Sentence : IEnumerable
 		Normal,
 		High,
 		Wrong,
+		HandsUp,
 	};
 
 	public Types type;
