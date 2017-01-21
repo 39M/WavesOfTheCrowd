@@ -6,5 +6,6 @@ public class Word
 {
 	public string text;
 	public float time;
+	public bool dirty;
 	public AudioClip clip;
 }
