@@ -172,6 +172,11 @@ public class SpeechManager : MonoBehaviour
 		Invoke ("EndTransform", currentSentence.LastWord.time / 2 + 1);
 	}
 
+	Vector3 RandomPositionInPeople ()
+	{
+		return new Vector3 (Random.Range (-1200, 350), Random.Range (125f, 600f));
+	}
+
 	void TransformNext ()
 	{
 		var item = wordItems [nextWordID];
@@ -182,13 +187,13 @@ public class SpeechManager : MonoBehaviour
 
 		if (word.interrupted) {
 			// TODO 飞到人群中爆炸
-			posTween.to = Vector3.up * 200;
+			posTween.to = RandomPositionInPeople ();
 
 		} else if (word.dirty) {
 			var text = item.Find ("Text").GetComponent<Text> ();
 			text.color = Color.red;
 			// TODO 飞到人群中爆炸
-			posTween.to = Vector3.up * 200;
+			posTween.to = RandomPositionInPeople ();
 
 		} else {
 			item.SetParent (noteGroup);
