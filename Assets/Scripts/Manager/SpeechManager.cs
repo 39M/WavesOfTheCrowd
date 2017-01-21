@@ -33,6 +33,8 @@ public class SpeechManager : MonoBehaviour
 	float noteBarLength;
 	public AudioClip interrupt;
 
+	public Sprite banner;
+
 	List<string> badStrings = new List<string> () {
 		@"$%^",
 		@"^(#&$",
