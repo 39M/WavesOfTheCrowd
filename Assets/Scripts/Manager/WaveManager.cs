@@ -18,7 +18,7 @@ public class WaveManager : MonoBehaviour
 	float cursorSizeMax = 250f;
 	float cursorSizeMin = 75f;
 
-	float clickTimeRange = 0.25f;
+	float clickTimeRange = 0.2f;
 
 
 	void Start ()
