@@ -4,44 +4,56 @@ using System.Collections;
 
 public class CursorManager : MonoBehaviour
 {
+	public static Canvas canvas;
+
+	public static Vector2 mousePosition {
+		get {
+			Vector2 pos;
+			RectTransformUtility.ScreenPointToLocalPointInRectangle (canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out pos);
+			return canvas.transform.TransformPoint (pos);
+		}
+	}
+
 	public static float cursorSize;
 
-	bool show;
+	bool showCircle;
 
-	public Canvas canvas;
+	public Texture2D hand;
 
 	RectTransform rectTransform;
 
-	Image cursorImage;
+	Image circle;
 
 	void Start ()
 	{
+		canvas = GameObject.Find ("UICanvas").GetComponent<Canvas> ();
 		rectTransform = GetComponent<RectTransform> ();
-		cursorImage = GetComponent<Image> ();
-		cursorImage.enabled = false;
+		circle = GetComponent<Image> ();
+		circle.enabled = false;
+		Cursor.SetCursor (hand, Vector2.zero, CursorMode.Auto);
 	}
 
 	void Update ()
 	{
-		if (show) {
-			Vector2 pos;
-			RectTransformUtility.ScreenPointToLocalPointInRectangle (canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out pos);
-			transform.position = canvas.transform.TransformPoint (pos);
+		if (showCircle) {
+			transform.position = mousePosition;
 
 			rectTransform.SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, cursorSize);
 			rectTransform.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, cursorSize);
 		}
 	}
 
-	public void ShowCursor ()
+	public void ShowCircle ()
 	{
-		show = true;
-		cursorImage.enabled = true;
+		showCircle = true;
+		Cursor.visible = false;
+		circle.enabled = true;
 	}
 
-	public void HideCursor ()
+	public void HideCircle ()
 	{
-		show = false;
-		cursorImage.enabled = false;
+		showCircle = false;
+		Cursor.visible = true;
+		circle.enabled = false;
 	}
 }

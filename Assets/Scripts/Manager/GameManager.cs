@@ -3,11 +3,17 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-	public Joker joker;
-	public Person person;
-	// Speech[] speech; 存储整个关卡的演讲内容；每个成员是一句话；每句话是一个数组／List，存储音节成员
-	// int nextSentenceIndex; 当前进行到的话的 Index
 	public SpeechData speechData;
+
+	public enum Status
+	{
+		Idle,
+		InSpeech,
+		InTransform,
+		InWave,
+	};
+
+	public static Status status = Status.Idle;
 
 	public static int peopleCount = 0;
 	public static int riseCount = 0;
@@ -26,6 +32,18 @@ public class GameManager : MonoBehaviour
 
 	void Update ()
 	{
+		switch (status) {
+		case Status.Idle:
+			break;
+		case Status.InSpeech:
+			Joker.Move (CursorManager.mousePosition);
+			break;
+		case Status.InTransform:
+			break;
+		case Status.InWave:
+			Joker.High (CursorManager.mousePosition, CursorManager.cursorSize);
+			break;
+		}
 	
 	}
 

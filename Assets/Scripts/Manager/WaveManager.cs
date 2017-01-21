@@ -81,14 +81,14 @@ public class WaveManager : MonoBehaviour
 
 		onWave = true;
 
-		GameManager.cursorManager.ShowCursor ();
+		GameManager.cursorManager.ShowCircle ();
 	}
 
 	void EndWave ()
 	{
 		onWave = false;
 
-		GameManager.cursorManager.HideCursor ();
+		GameManager.cursorManager.HideCircle ();
 		GameManager.speechManager.EndWave ();
 	}
 }
