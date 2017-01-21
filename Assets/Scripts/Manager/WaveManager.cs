@@ -42,8 +42,9 @@ public class WaveManager : MonoBehaviour
 				return;
 			}
 
+			float ratio = Mathf.Abs (currentWord.time - timer) / clickTimeRange;
 			float cursorSize = Mathf.Clamp (
-				                   cursorSizeMax - Mathf.Abs (currentWord.time - timer) / clickTimeRange * (cursorSizeMax - cursorSizeMin),
+				                   cursorSizeMax - ratio * ratio * (cursorSizeMax - cursorSizeMin),
 				                   cursorSizeMin,
 				                   cursorSizeMax
 			                   );

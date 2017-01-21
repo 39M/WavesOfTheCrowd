@@ -235,10 +235,9 @@ public class SpeechManager : MonoBehaviour
 		noteBar.GetComponent<Slider> ()
 			.DOValue (1, currentSentence.totalTime)
 			.SetEase (Ease.Linear)
-			.OnComplete(() => {
+			.OnComplete (() => {
 			noteBar.GetComponent<Slider> ()
-				.DOValue (0, 1)
-				.SetEase (Ease.Linear);
+				.DOValue (0, 1);
 		});
 
 		GameManager.waveManager.StartWave (currentSentence);
