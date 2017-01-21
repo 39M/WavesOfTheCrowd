@@ -31,6 +31,10 @@ public class Joker : MonoBehaviour
 			{
 				j.Move( mouse, delta );
 			}
+			else
+			{
+				j.isMove=false;
+			}
 		}
 	}
 
@@ -42,18 +46,29 @@ public class Joker : MonoBehaviour
 			{
 				j.High();
 			}
+			else
+			{
+				j.isRise=false;	
+			}
 		}
 	}
 
-	public static void Interrupt( Vector2 mouse, float radius )
+	public static bool Interrupt( Vector2 mouse, float radius )
 	{
+		bool success=false;
 		foreach( var j in jokers )
 		{
 			if( Vector2.SqrMagnitude( mouse-j.location )<radius )
 			{
+				success=true;
 				j.Interrupt();
 			}
+			else
+			{
+				j.isBreak=false;
+			}
 		}
+		return success;
 	}
 	#endregion
 
@@ -61,7 +76,9 @@ public class Joker : MonoBehaviour
 	public Vector2 location;
 	public Vector2 size=new Vector2( 10, 10 );
 	public float high=10;
-	public bool isRise =false;
+	public bool isBreak=false;
+	public bool isMove=false;
+	public bool isRise=false;
 	public Transform wave;
 
 	Animator _animator;
@@ -77,7 +94,11 @@ public class Joker : MonoBehaviour
 
 	public void Move( Vector2 mouse, Vector2 delta )
 	{
-		animator.Play( "walk" );
+		if( !isMove )
+		{
+			isMove=true;
+			animator.Play( "walk" );
+		}
 		var distance=Vector2.SqrMagnitude( mouse-location );
 		location+=delta*( 1-distance/moveRadius );
 		location.x=Mathf.Clamp( location.x, clamp.xMin, clamp.xMax );
@@ -86,12 +107,20 @@ public class Joker : MonoBehaviour
 
 	public void High()
 	{
-		OnMouseDown();
+		if( !isRise )
+		{
+			isRise=true;
+			OnMouseDown();
+		}
 	}
 
 	public void Interrupt()
 	{
-		
+		if( !isBreak )
+		{
+			animator.Play( "break" );
+			isBreak=true;
+		}
 	}
 
 	public void OnMouseDown()

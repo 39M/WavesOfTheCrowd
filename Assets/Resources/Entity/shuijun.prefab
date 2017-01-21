@@ -22,6 +22,7 @@ GameObject:
   - 222: {fileID: 222000012117943312}
   - 114: {fileID: 114000012814400454}
   - 95: {fileID: 95000010716175180}
+  - 114: {fileID: 114000011449086012}
   m_Layer: 5
   m_Name: shuijun
   m_TagString: Untagged
@@ -63,6 +64,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000011449086012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010839876558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {x: 0, y: 0}
+  size: {x: 10, y: 10}
+  high: 10
+  isRise: 0
+  wave: {fileID: 0}
 --- !u!114 &114000012065409354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,8 +162,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225.8, y: 272.2}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 97, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000013851872924
 RectTransform:
@@ -163,6 +180,6 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0.00076293945}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
