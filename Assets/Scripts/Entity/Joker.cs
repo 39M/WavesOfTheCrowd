@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 [RequireComponent( typeof( Animator ) )]
 public class Joker : MonoBehaviour
@@ -14,7 +15,8 @@ public class Joker : MonoBehaviour
 
 	public static void Create()
 	{
-		Resources.Load<Joker>( "Entity/shuijun.prefab" );
+		jokers = GameObject.FindObjectsOfType<Joker> ().ToList();
+		//Resources.Load<Joker>( "Entity/shuijun" );
 	}
 
 	public static void Move(Vector2 mouse)
@@ -73,7 +75,15 @@ public class Joker : MonoBehaviour
 	#endregion
 
 	#region object
-	public Vector2 location;
+	public Vector2 _location;
+	public Vector2 location
+	{
+		get{ return _location;}
+		set{ 
+			_location = value;
+			transform.localPosition = new Vector3 (value.x, value.y * 0.5f, 0);
+		}
+	}
 	public Vector2 size=new Vector2( 10, 10 );
 	public float high=10;
 	public bool isBreak=false;
@@ -101,8 +111,7 @@ public class Joker : MonoBehaviour
 		}
 		var distance=Vector2.SqrMagnitude( mouse-location );
 		location+=delta*( 1-distance/moveRadius );
-		location.x=Mathf.Clamp( location.x, clamp.xMin, clamp.xMax );
-		location.y=Mathf.Clamp( location.y, clamp.yMin, clamp.yMax );
+		location = new Vector2 (Mathf.Clamp (location.x, clamp.xMin, clamp.xMax), Mathf.Clamp (location.y, clamp.yMin, clamp.yMax));
 	}
 
 	public void High()

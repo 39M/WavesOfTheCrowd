@@ -21,9 +21,11 @@ public class Person : MonoBehaviour
 
 	public static void Create (int num = 1)
 	{
+		var canvas = GameObject.Find("UICanvas");
 		for (int i = 0; i < num; i++) {
-			var go = new GameObject ("person " + people.Count);
-			var p = go.AddComponent<Person> ();
+			var go = Resources.Load<GameObject> ("Entity/person");
+			var p = Instantiate(go).GetComponent<Person>();
+			p.transform.SetParent (canvas.transform,false);
 			p.location = new Vector2 (Random.Range (-500, 500), Random.Range (-500, 500));
 			people.Add (p);
 			GameManager.instance.peopleCount = people.Count;
@@ -56,7 +58,15 @@ public class Person : MonoBehaviour
 	#region object
 
 	[SerializeField]
-	Vector2 location;
+	Vector2 _location;
+	Vector2 location
+	{
+		get{ return _location;}
+		set{ 
+			_location = value;
+			transform.localPosition = new Vector3 (value.x, value.y * 0.5f, 0);
+		}
+	}
 	[SerializeField]
 	float calm = 5f;
 	[SerializeField]
