@@ -7,8 +7,8 @@ public class HUDManager : MonoBehaviour
 	public Text peopleCountLabel;
 	public Text riseCountLabel;
 
-	const string peopleCountString = "观众：";
-	const string riseCountString = "Rise：";
+	const string peopleCountString = "";
+	const string riseCountString = "";
 
 	void Start ()
 	{
