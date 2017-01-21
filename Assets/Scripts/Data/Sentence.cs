@@ -16,8 +16,8 @@ public class Sentence : IEnumerable
 	public Types type;
 	public float totalTime;
 	public List<Word> words;
-	[HideInInspector]
-	public bool interrupted;
+//	[HideInInspector]
+	public bool interrupted = false;
 
 	public int Count {
 		get {

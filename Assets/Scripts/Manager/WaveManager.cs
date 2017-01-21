@@ -3,8 +3,10 @@ using System.Collections;
 
 public class WaveManager : MonoBehaviour
 {
-	Sentence sentence;
-	Word currentWord;
+	[SerializeField]
+	Sentence sentence = null;
+	[SerializeField]
+	Word currentWord = null;
 
 	int nextWordID;
 
@@ -24,12 +26,11 @@ public class WaveManager : MonoBehaviour
 	
 	}
 
-	void OnGUI()
+	void OnGUI ()
 	{
-		var e=Event.current;
-		if( e.isMouse )
-		{
-			Joker.High( e.mousePosition, 100 );
+		var e = Event.current;
+		if (e.isMouse) {
+			Joker.High (e.mousePosition, 100);
 		}
 	}
 
@@ -53,20 +54,13 @@ public class WaveManager : MonoBehaviour
 			CursorManager.cursorSize = cursorSize;
 
 			if (timer - currentWord.time > clickTimeRange) {
-//				GameManager.audio.PlayOneShot (currentWord.clip);
-				if (nextWordID < sentence.Count) {
+				while (nextWordID < sentence.Count) {
 					currentWord = sentence [nextWordID++];
+					if (!currentWord.dirty && !currentWord.interrupted) {
+						break;
+					}
+					currentWord = Word.Infinity;
 				}
-			}
-
-			//		var cursor = Texture2D.whiteTexture;
-			//		cursor.Resize ((int)Time.time, (int)Time.time);
-			//		Cursor.SetCursor (cursor, Vector2.zero, CursorMode.Auto);
-			
-			if (Input.anyKeyDown) {
-				// Input.mousePosition, cursorSize
-				// 将鼠标位置 圆圈范围 发给 Joker 进行判断
-
 			}
 		}
 	}
@@ -75,7 +69,19 @@ public class WaveManager : MonoBehaviour
 	{
 		this.sentence = sentence;
 		nextWordID = 0;
-		currentWord = sentence [0];
+
+		foreach (Word word in sentence) {
+			nextWordID++;
+			if (!word.dirty && !word.interrupted) {
+				currentWord = word;
+				break;
+			}
+		}
+
+		if (currentWord == null) {
+			currentWord = new Word ();
+			currentWord.time = float.PositiveInfinity;
+		}
 
 		startTime = Time.time;
 
@@ -86,6 +92,8 @@ public class WaveManager : MonoBehaviour
 
 	void EndWave ()
 	{
+		sentence = null;
+		currentWord = null;
 		onWave = false;
 
 		GameManager.cursorManager.HideCircle ();
