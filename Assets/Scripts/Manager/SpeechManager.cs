@@ -55,8 +55,8 @@ public class SpeechManager : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.anyKeyDown)
-			Interrupt ();
+//		if (Input.anyKeyDown)
+//			Interrupt ();
 	}
 
 	public void ShowNextSentence ()

@@ -26,14 +26,6 @@ public class WaveManager : MonoBehaviour
 	
 	}
 
-	void OnGUI ()
-	{
-		var e = Event.current;
-		if (e.isMouse) {
-			Joker.High (e.mousePosition, 100);
-		}
-	}
-
 	void Update ()
 	{
 		if (onWave) {
