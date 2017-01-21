@@ -50,7 +50,7 @@ TextureImporter:
   textureType: 8
   buildTargetSettings:
   - buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 128
     textureFormat: -2
     compressionQuality: 50
     allowsAlphaSplitting: 0

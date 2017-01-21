@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 [RequireComponent (typeof(Animator))]
 public class Joker : MonoBehaviour
@@ -38,19 +39,24 @@ public class Joker : MonoBehaviour
 		preMouse = mouse;
 	}
 
-	public static void High (Vector2 mouse, float radius)
-	{
-		foreach (var j in jokers) {
-			var vect = new Vector2 (j.transform.position.x, j.transform.position.y);
-			if (Vector2.SqrMagnitude (mouse - vect) < moveRadius) {
-				j.High ();
-			} else {
-				j.isRise = false;	
-			}
-		}
-	}
+    public static void High(Vector2 mouse, float radius, bool handsUp = false)
+    {
+        foreach (var j in jokers)
+        {
+            var vect = new Vector2(j.transform.position.x, j.transform.position.y);
+            if (Vector2.SqrMagnitude(mouse - vect) < moveRadius)
+            {
+                j.radius = radius;
+                j.High(handsUp);
+            }
+            else
+            {
+                j.isRise = false;
+            }
+        }
+    }
 
-	public static bool Interrupt (Vector2 mouse, float radius)
+    public static bool Interrupt (Vector2 mouse, float radius)
 	{
 		bool success = false;
 		foreach (var j in jokers) {
@@ -74,11 +80,11 @@ public class Joker : MonoBehaviour
 			var pos = transform.localPosition;
 			return new Vector2 (pos.x, pos.y * 2); }
 		set { 
-			transform.localPosition = new Vector3 (value.x, value.y * 0.5f, 0);
+			transform.localPosition = new Vector3 (value.x, value.y * 0.5f, value.y);
 		}
 	}
 
-	public Vector2 size = new Vector2 (100, 100);
+	public float radius = 300;
 	public float high = 10;
 	public bool isBreak = false;
 	public bool isMove = false;
@@ -105,12 +111,20 @@ public class Joker : MonoBehaviour
 		location = new Vector2 (Mathf.Clamp (location.x, clamp.xMin, clamp.xMax), Mathf.Clamp (location.y, clamp.yMin, clamp.yMax));
 	}
 
-	public void High ()
+	public void High (bool handsUp)
 	{
 		if (!isRise) {
 			isRise = true;
-			OnMouseDown ();
-		}
+            var image = GetComponent<Image>();
+            image.color = new Color(0.5f, 1f, 1f, 1);
+            image.DOColor(Color.white, 1).SetAutoKill();
+		    animator.Play ("rise");
+            Person.High(location, radius, high, handsUp);
+            if (handsUp)
+            {
+                HandsUp();
+            }
+        }
 	}
 
 	public void Interrupt ()
@@ -121,17 +135,16 @@ public class Joker : MonoBehaviour
 		}
 	}
 
-	public void OnMouseDown ()
+	public void HandsUp ()
 	{
-		animator.Play ("rise");
-		wave.DOScale (4, 1).SetAutoKill (true).OnComplete<Tween> (delegate {
-			wave.localScale = Vector3.zero;
-		});
-		var rect = new Rect ();
-		rect.position = location - size / 2;
-		rect.size = size;
-		Person.High (rect, high);
-	}
+        if (wave)
+        {
+            wave.localScale = new Vector3(1, 0, 1);
+            wave.DOScaleY(1, 2f).SetAutoKill(true).OnComplete<Tween>(delegate {
+                wave.DOScaleY(0, 2f).SetAutoKill(true);
+            });
+        }
+    }
 
 	#endregion
 
