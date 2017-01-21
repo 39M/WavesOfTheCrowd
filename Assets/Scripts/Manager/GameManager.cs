@@ -38,21 +38,18 @@ public class GameManager : MonoBehaviour
 			break;
 		case Status.InSpeech:
 			Joker.Move (CursorManager.mousePosition);
-			if( speechManager.currentSentence.type==Sentence.Types.Wrong&&Input.GetMouseButton( 0 ) )
-			{
-				if( Joker.Interrupt( CursorManager.mousePosition, CursorManager.cursorSize ) )
-				{
-					audio.PlayOneShot( speechManager.interrupt );
-					speechManager.Interrupt();
+			if (speechManager.currentSentence.type == Sentence.Types.Wrong && Input.GetMouseButton (0)) {
+				if (Joker.Interrupt (CursorManager.mousePosition, CursorManager.cursorSize)) {
+					audio.PlayOneShot (speechManager.interrupt);
+					speechManager.Interrupt ();
 				}
 			}
 			break;
 		case Status.InTransform:
 			break;
 		case Status.InWave:
-			if( Input.GetMouseButton( 0 ) )
-			{
-				Joker.High( CursorManager.mousePosition, CursorManager.cursorSize );
+			if (Input.GetMouseButton (0)) {
+				Joker.High (CursorManager.mousePosition, CursorManager.cursorSize);
 			}
 			break;
 		}
@@ -116,6 +113,18 @@ public class GameManager : MonoBehaviour
 			return _audio;
 		}
 	}
+
+	private static Canvas _canvas = null;
+
+	public static Canvas canvas {
+		get {
+			if (_canvas == null) {
+				_canvas = GameObject.Find ("UICanvas").GetComponent<Canvas> ();
+			}
+			return _canvas;
+		}
+	}
+
 
 	void OnSpeech ()
 	{
