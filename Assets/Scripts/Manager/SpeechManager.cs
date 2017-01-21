@@ -31,7 +31,6 @@ public class SpeechManager : MonoBehaviour
 	public Transform noteGroup;
 	[SerializeField]
 	float noteBarLength;
-	public Transform scanLine;
 	public AudioClip interrupt;
 
 	List<string> badStrings = new List<string> () {
@@ -198,13 +197,13 @@ public class SpeechManager : MonoBehaviour
 				// TODO 飞到人群中爆炸(大)
 				newPosTween.onComplete = () => {
 					Debug.Log ("Big Bang");
-					Destroy(newItem.gameObject, 1f);
+					Destroy (newItem.gameObject, 1f);
 				};
 			} else {
 				// TODO 飞到人群中爆炸（小）
 				newPosTween.onComplete = () => {
-					Debug.Log("Small Bang");
-					Destroy(newItem.gameObject, 1f);
+					Debug.Log ("Small Bang");
+					Destroy (newItem.gameObject, 1f);
 				};
 			}
 
@@ -233,20 +232,14 @@ public class SpeechManager : MonoBehaviour
 
 	public void StartWave ()
 	{
-		var posTween = scanLine.GetComponent<PositionTween> ();
-
-		var posFrom = Vector3.zero;
-		posFrom.x = -noteBarLength / 2f;
-		posTween.from = posFrom;
-
-		var posTo = Vector3.zero;
-		posTo.x = noteBarLength / 2f;
-		posTween.to = posTo;
-
-		posTween._duration = currentSentence.totalTime;
-
-		posTween.ResetTween ();
-		posTween.Play ();
+		noteBar.GetComponent<Slider> ()
+			.DOValue (1, currentSentence.totalTime)
+			.SetEase (Ease.Linear)
+			.OnComplete(() => {
+			noteBar.GetComponent<Slider> ()
+				.DOValue (0, 1)
+				.SetEase (Ease.Linear);
+		});
 
 		GameManager.waveManager.StartWave (currentSentence);
 	}
@@ -258,8 +251,11 @@ public class SpeechManager : MonoBehaviour
 
 	public void Interrupt ()
 	{
-		if (GameManager.instance.status == GameManager.Status.InSpeech) {
-			currentSentence.interrupted = true;
+		if (!currentSentence.interrupted) {
+			if (GameManager.instance.status == GameManager.Status.InSpeech) {
+				currentSentence.interrupted = true;
+				// 播放音效
+			}
 		}
 	}
 }
