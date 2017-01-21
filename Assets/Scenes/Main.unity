@@ -592,26 +592,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224000011692677824, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000011692677824, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000011692677824, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -62.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000011692677824, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 67
-      objectReference: {fileID: 0}
     - target: {fileID: 224000013333596194, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
         type: 2}
       propertyPath: m_AnchorMin.y
@@ -636,6 +616,26 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011692677824, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011692677824, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011692677824, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -62.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011692677824, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 67
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e5fd54b38b344e55ac9b942e3e5bd14, type: 2}
@@ -1214,6 +1214,11 @@ Prefab:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114000012843560388, guid: 0fc410d1347cc4011a6769bdcf08e880,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1932110523}
+    - target: {fileID: 114000013823208540, guid: 0fc410d1347cc4011a6769bdcf08e880,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
