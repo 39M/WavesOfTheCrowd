@@ -7,6 +7,8 @@ public class WaveManager : MonoBehaviour
 	Sentence sentence = null;
 	[SerializeField]
 	Word currentWord = null;
+	[SerializeField]
+	Word nextWord = null;
 
 	int nextWordID;
 
@@ -19,7 +21,9 @@ public class WaveManager : MonoBehaviour
 	float cursorSizeMin = 75f;
 
 	float clickTimeRange = 0.2f;
+	float refreshTimeRange = 0.4f;
 
+	public int highTime = 1;
 
 	void Start ()
 	{
@@ -45,15 +49,29 @@ public class WaveManager : MonoBehaviour
 			                   );
 			CursorManager.cursorSize = cursorSize;
 
-			if (timer - currentWord.time > clickTimeRange) {
-				while (nextWordID < sentence.Count) {
-					currentWord = sentence [nextWordID++];
-					if (!currentWord.dirty && !currentWord.interrupted) {
-						break;
-					}
-					currentWord = Word.Infinity;
-				}
+			if (timer - currentWord.time > nextWord.time - timer) {
+				GetNextWord ();
 			}
+		}
+	}
+
+	void AddHighTime ()
+	{
+		highTime = Mathf.Clamp (highTime + 1, 0, 2);
+	}
+
+	void GetNextWord ()
+	{
+		currentWord = sentence [nextWordID++];
+		if (nextWordID < sentence.Count) {
+			nextWord = sentence [nextWordID];
+
+			float refreshTime = Mathf.Min (currentWord.time + refreshTimeRange, nextWord.time - refreshTimeRange);
+			if (refreshTime > timer) {
+				Invoke ("AddHighTime", refreshTime - timer);
+			}
+		} else {
+			nextWord = Word.Infinity;
 		}
 	}
 
@@ -61,19 +79,8 @@ public class WaveManager : MonoBehaviour
 	{
 		this.sentence = sentence;
 		nextWordID = 0;
-
-		foreach (Word word in sentence) {
-			nextWordID++;
-			if (!word.dirty && !word.interrupted) {
-				currentWord = word;
-				break;
-			}
-		}
-
-		if (currentWord == null) {
-			currentWord = new Word ();
-			currentWord.time = float.PositiveInfinity;
-		}
+		highTime = 1;
+		GetNextWord ();
 
 		startTime = Time.time;
 
@@ -86,6 +93,7 @@ public class WaveManager : MonoBehaviour
 	{
 		sentence = null;
 		currentWord = null;
+		nextWord = null;
 		onWave = false;
 
 		GameManager.cursorManager.HideCircle ();
