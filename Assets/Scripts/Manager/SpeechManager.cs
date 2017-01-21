@@ -88,7 +88,9 @@ public class SpeechManager : MonoBehaviour
 			var item = Instantiate (wordItemPrefab, wordGroupHide) as GameObject;
 			wordItemsHide.Add (item.transform);
 
-			item.GetComponentInChildren<Text> ().text = word.text;
+			var text = item.GetComponentInChildren<Text> ();
+			text.text = word.text;
+			text.fontSize = currentSentence.fontSize;
 
 			Invoke ("ShowWord", word.time);
 		}
@@ -113,6 +115,8 @@ public class SpeechManager : MonoBehaviour
 
 		var text = item.GetComponentInChildren<Text> ();
 		text.text = currentWord.text;
+		text.fontSize = currentSentence.fontSize;
+
 		if (currentSentence.interrupted) {
 			currentWord.interrupted = true;
 

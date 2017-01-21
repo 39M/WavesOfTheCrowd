@@ -15,6 +15,7 @@ public class Sentence : IEnumerable
 
 	public Types type;
 	public float totalTime;
+	public int fontSize = 48;
 	public List<Word> words;
 //	[HideInInspector]
 	public bool interrupted = false;
