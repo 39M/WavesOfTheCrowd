@@ -8,11 +8,11 @@ public class Joker : MonoBehaviour
 {
 	#region static
 
-	public static Vector2 sensitive;
+	public static float sensitive = 0.0001f;
 	public static List<Joker> jokers = new List<Joker> ();
-	public static Rect clamp = new Rect (-500, -500, 1000, 1000);
+	public static Rect clamp = new Rect (-900, -600, 1800, 1200);
 	public static Vector2 preMouse;
-	public static float moveRadius = 100;
+	public static float moveRadius = 0.1f;
 
 	public static void Create ()
 	{
@@ -28,18 +28,21 @@ public class Joker : MonoBehaviour
 		var delta = mouse - preMouse;
 
 		foreach (var j in jokers) {
-			if (Vector2.SqrMagnitude (mouse - j.location) < moveRadius) {
+			var vect = new Vector2 (j.transform.position.x, j.transform.position.y);
+			if (Vector2.SqrMagnitude (mouse - vect) < moveRadius) {
 				j.Move (mouse, delta);
 			} else {
 				j.isMove = false;
 			}
 		}
+		preMouse = mouse;
 	}
 
 	public static void High (Vector2 mouse, float radius)
 	{
 		foreach (var j in jokers) {
-			if (Vector2.SqrMagnitude (mouse - j.location) < radius) {
+			var vect = new Vector2 (j.transform.position.x, j.transform.position.y);
+			if (Vector2.SqrMagnitude (mouse - vect) < moveRadius) {
 				j.High ();
 			} else {
 				j.isRise = false;	
@@ -51,7 +54,8 @@ public class Joker : MonoBehaviour
 	{
 		bool success = false;
 		foreach (var j in jokers) {
-			if (Vector2.SqrMagnitude (mouse - j.location) < radius) {
+			var vect = new Vector2 (j.transform.position.x, j.transform.position.y);
+			if (Vector2.SqrMagnitude (mouse - vect) < moveRadius) {
 				success = true;
 				j.Interrupt ();
 			} else {
@@ -65,17 +69,16 @@ public class Joker : MonoBehaviour
 
 	#region object
 
-	public Vector2 _location;
-
 	public Vector2 location {
-		get{ return _location; }
+		get{
+			var pos = transform.localPosition;
+			return new Vector2 (pos.x, pos.y * 2); }
 		set { 
-			_location = value;
 			transform.localPosition = new Vector3 (value.x, value.y * 0.5f, 0);
 		}
 	}
 
-	public Vector2 size = new Vector2 (10, 10);
+	public Vector2 size = new Vector2 (100, 100);
 	public float high = 10;
 	public bool isBreak = false;
 	public bool isMove = false;
@@ -96,10 +99,9 @@ public class Joker : MonoBehaviour
 	{
 		if (!isMove) {
 			isMove = true;
-			animator.Play ("walk");
 		}
 		var distance = Vector2.SqrMagnitude (mouse - location);
-		location += delta * (1 - distance / moveRadius);
+		location -= delta * (1 - distance / moveRadius) * sensitive;
 		location = new Vector2 (Mathf.Clamp (location.x, clamp.xMin, clamp.xMax), Mathf.Clamp (location.y, clamp.yMin, clamp.yMax));
 	}
 
