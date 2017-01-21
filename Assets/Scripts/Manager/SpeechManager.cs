@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+using DG.Tweening;
+
 public class SpeechManager : MonoBehaviour
 {
 	public Speech speech;
@@ -30,6 +32,20 @@ public class SpeechManager : MonoBehaviour
 	public float noteBarLength;
 	public Transform scanLine;
 
+	List<string> badStrings = new List<string> () {
+		@"$%^",
+		@"^(#&$",
+		@")#",
+		@"#$%^&$^&",
+		@"(*&^%(*^@#$",
+		@"&#^",
+		@"!(@#",
+		@"!@(&{#",
+		@"*#&@()%",
+		@"?!@$*(#@",
+		@"(&#&$)@",
+	};
+
 	void Start ()
 	{
 		
@@ -37,7 +53,8 @@ public class SpeechManager : MonoBehaviour
 
 	void Update ()
 	{
-		
+		if (Input.anyKeyDown)
+			Interrupt ();
 	}
 
 	public void ShowNextSentence ()
@@ -94,6 +111,15 @@ public class SpeechManager : MonoBehaviour
 
 		var text = item.GetComponentInChildren<Text> ();
 		text.text = currentWord.text;
+		if (currentSentence.interrupted) {
+			currentWord.interrupted = true;
+
+			var badString = badStrings [Random.Range (0, badStrings.Count - 1)];
+			itemHide.GetComponentInChildren<Text> ().text = badString;
+			LayoutRebuilder.ForceRebuildLayoutImmediate (wordGroupHide.GetComponent<RectTransform> ());
+
+			text.DOText(badString, 1f, true, ScrambleMode.All);
+		}
 
 		switch (currentSentence.type) {
 		case Sentence.Types.High:
@@ -149,18 +175,29 @@ public class SpeechManager : MonoBehaviour
 		var item = wordItems [nextWordID];
 		var word = currentSentence [nextWordID];
 
-		// TODO 对错误回合的处理
-
-		item.SetParent (noteGroup);
-		item.Find ("Text").gameObject.SetActive (false);
-		item.Find ("Note").gameObject.SetActive (true);
-
 		var posTween = item.GetComponent<PositionTween> ();
 		posTween.from = item.localPosition;
 
-		var posTo = Vector3.zero;
-		posTo.x = (word.time / currentSentence.totalTime - 0.5f) * noteBarLength;
-		posTween.to = posTo;
+		// TODO 逻辑待优化
+		if (word.dirty) {
+			if (word.interrupted) {
+				// TODO 飞到人群中爆炸
+				posTween.to = Vector3.up * 200;
+			} else {
+				var text = item.Find ("Text").GetComponent<Text> ();
+				text.color = Color.red;
+				// TODO 飞到人群中爆炸
+				posTween.to = Vector3.up * 200;
+			}
+		} else {
+			item.SetParent (noteGroup);
+			item.Find ("Text").gameObject.SetActive (false);
+			item.Find ("Note").gameObject.SetActive (true);
+			
+			var posTo = Vector3.zero;
+			posTo.x = (word.time / currentSentence.totalTime - 0.5f) * noteBarLength;
+			posTween.to = posTo;
+		}
 
 		posTween.Play ();
 
@@ -200,7 +237,7 @@ public class SpeechManager : MonoBehaviour
 	public void Interrupt ()
 	{
 		if (GameManager.instance.status == GameManager.Status.InSpeech) {
-			currentWord.interrupted = true;
+			currentSentence.interrupted = true;
 		}
 	}
 }

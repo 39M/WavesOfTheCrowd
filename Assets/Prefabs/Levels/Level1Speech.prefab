@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000010728229334}
   - 114: {fileID: 114000010702139400}
   m_Layer: 0
-  m_Name: Level1Speech 1
+  m_Name: Level1Speech
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,231 +58,292 @@ MonoBehaviour:
       words:
       - text: No
         time: 0.75
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Dream
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Is Too
         time: 2.25
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Big
         time: 3
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
+      interrupted: 0
     - type: 0
       totalTime: 3
       words:
       - text: No
         time: 0.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Challenge
         time: 1
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Is Too
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Great
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
+      interrupted: 0
     - type: 1
       totalTime: 3
       words:
       - text: I Gonna
         time: 0.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Make
         time: 1
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: America
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Great
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Again
         time: 2.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
+      interrupted: 0
     - type: 0
       totalTime: 3
       words:
       - text: Now
         time: 1
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: I'm
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: The
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: President
         time: 2.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
+      interrupted: 0
     - type: 0
       totalTime: 3.5
       words:
       - text: Politicians
         time: 1
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: All
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Talk
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: No
         time: 2.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Action
         time: 3
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
+      interrupted: 0
     - type: 0
       totalTime: 3
       words:
       - text: I'm a
         time: 1
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Really
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Smart
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Guy
         time: 2.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
+      interrupted: 0
     - type: 0
       totalTime: 3.5
       words:
       - text: I'm
         time: 1
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Going
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: To Do A
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Fucking
         time: 2.5
-        dirty: 1
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 1
+        interrupted: 0
       - text: Wall
         time: 3
-        dirty: 1
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 1
+        interrupted: 0
+      interrupted: 0
     - type: 0
       totalTime: 3
       words:
       - text: Against
         time: 1
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Immigrant
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: From
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Mexico
         time: 2.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
+      interrupted: 0
     - type: 0
       totalTime: 3
       words:
       - text: Shut
         time: 1
-        dirty: 1
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 1
+        interrupted: 0
       - text: Up
         time: 1.5
-        dirty: 1
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 1
+        interrupted: 0
       - text: You
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Idot
         time: 2.5
-        dirty: 1
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 1
+        interrupted: 0
+      interrupted: 0
     - type: 0
       totalTime: 3
       words:
       - text: Compromise
         time: 1
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Is The
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Equivalent
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: To Defeat
         time: 2.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
+      interrupted: 0
     - type: 1
       totalTime: 5
       words:
       - text: Let's
         time: 1
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Make
         time: 1.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: America
         time: 2
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Greater
         time: 2.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Than
         time: 3
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Ever
         time: 3.5
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
       - text: Before
         time: 4
-        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+        dirty: 0
+        interrupted: 0
+      interrupted: 0

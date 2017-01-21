@@ -6,8 +6,8 @@ public class Word
 {
 	public string text;
 	public float time;
-	public bool dirty;
 	public AudioClip clip;
+	public bool dirty;
 	[HideInInspector]
 	public bool interrupted;
 }
