@@ -189,11 +189,13 @@ public class Person : MonoBehaviour
 
     public Color bannerColor()
     {
-        var pos = transform.position;
-        var x = pos.x + Screen.width / 2;
-        var y = pos.y + Screen.height / 2;
         var t2 = GameManager.speechManager.banner.texture;
-        return t2.GetPixel((int)x / Screen.width * t2.width, (int)y / Screen.height * t2.height);
+        var pos = transform.localPosition;
+        float locX = (pos.x / Screen.width + 0.5f);
+        float locY = (pos.y / Screen.height + 0.5f);
+        int x = (int)( locX * t2.width);
+        int y = (int)(locY * t2.height);
+        return t2.GetPixel(x, y);
     }
     void Update ()
 	{
