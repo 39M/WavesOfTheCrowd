@@ -1,22 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Person : MonoBehaviour 
+public class Person : MonoBehaviour
 {
-	public static bool inSpeech=false;
+	#region Static
 	public static List<Person> people=new List<Person>();
+	public static List<Person> risePeople=new List<Person>();
 
-	public static void AddPerson(Vector2 location)
+	public static bool inSpeech=false;
+	public static Vector2 mousePos;
+	public static Vector2 center;
+	public static Vector2 sensitive;
+	public static Rect clamp;
+
+	public static int attractLevel{get{return 5;}}
+	public static int attractPeople;
+
+	public static void RisePerson(Person person)
 	{
-		var go=new GameObject( "person" );
-		var p=go.AddComponent<Person>();
-		p.SetLocation( location );
-		people.Add( p );
+		risePeople.Add( person );
+		if( risePeople.Count/attractLevel-attractPeople>1 )
+		{
+			var go=new GameObject( "person "+people.Count );
+			var p=go.AddComponent<Person>();
+			people.Add( p );
+			//TODO create anim
+			attractPeople+=1;
+		}
 	}
 
-	public static void High(Rect area,float level)
+	public static void High( Rect area, float level )
 	{
-		foreach(var p in people)
+		foreach( var p in people )
 		{
 			if( area.Contains( p.location ) )
 			{
@@ -25,14 +40,29 @@ public class Person : MonoBehaviour
 		}
 	}
 
+	#endregion
+
+
+	#region object
 	[SerializeField]
 	Vector2 location;
+	[SerializeField]
+	float calm=5f;
+	[SerializeField]
+	int minSenti=0;
+	[SerializeField]
+	int maxSenti=100;
+
+
 	[HideInInspector]
-	public float sentiment = 0;
-	[HideInInspector]
-	public float attraction=0;
-	public float maxAttraction=30;
-	public float calm = 1f;
+	public float sentiment = 50;
+	public bool isRise
+	{
+		get
+		{
+			return sentiment>80;
+		}
+	}
 
 	public void SetLocation(Vector2 loc)
 	{
@@ -43,25 +73,21 @@ public class Person : MonoBehaviour
 	{
 		//影响观众
 		sentiment+=level;
-		attraction+=level;
-		// 吸引观众
-		if( attraction>=maxAttraction )
+		//add in high list
+		if( isRise&&!risePeople.Contains( this ) )
 		{
-			var loc=location
-				+Vector2.up*Random.Range( 1, 10 )
-				+Vector2.right*Random.Range( 1, 10 );
-			AddPerson(loc);
-			attraction-=maxAttraction;
+			RisePerson(this);
 		}
-		
 	}
 
 	void Update()
 	{
 		if( !inSpeech )
 		{
-			attraction-=Time.deltaTime*calm;
+			sentiment-=Time.deltaTime*calm;
+			sentiment=Mathf.Clamp( sentiment, minSenti, maxSenti);
 		}
 	}
+	#endregion
 
 }
