@@ -55,5 +55,6 @@ public class CursorManager : MonoBehaviour
 		showCircle = false;
 		Cursor.visible = true;
 		circle.enabled = false;
+		transform.position = Vector2.up * 10000;
 	}
 }
