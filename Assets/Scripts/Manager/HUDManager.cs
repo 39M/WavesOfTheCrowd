@@ -17,7 +17,7 @@ public class HUDManager : MonoBehaviour
 	
 	void Update ()
 	{
-		peopleCountLabel.text = peopleCountString + GameManager.peopleCount;
-		riseCountLabel.text = riseCountString + GameManager.riseCount;
+		peopleCountLabel.text = peopleCountString + GameManager.instance.peopleCount;
+		riseCountLabel.text = riseCountString + GameManager.instance.riseCount;
 	}
 }

@@ -49,6 +49,16 @@ public class SpeechManager : MonoBehaviour
 
 		ClearLastSentence ();
 
+		switch (currentSentence.type) {
+		case Sentence.Types.Normal:
+			break;
+		case Sentence.Types.High:
+			// TODO 显示提示文字 演讲高潮
+			break;
+		case Sentence.Types.Wrong:
+			break;
+		}
+
 		currentSentence = speech [nextSentenceID];
 		nextWordID = 0;
 
@@ -67,7 +77,6 @@ public class SpeechManager : MonoBehaviour
 		Invoke ("EndSpeech", currentSentence.totalTime);
 
 		nextSentenceID++;
-		Debug.Log (this.nextSentenceID);
 	}
 
 	void ShowWord ()
@@ -83,7 +92,17 @@ public class SpeechManager : MonoBehaviour
 		var item = Instantiate (wordItemPrefab, wordGroup) as GameObject;
 		wordItems.Add (item.transform);
 
-		item.GetComponentInChildren<Text> ().text = currentWord.text;
+		var text = item.GetComponentInChildren<Text> ();
+		text.text = currentWord.text;
+
+		switch (currentSentence.type) {
+		case Sentence.Types.High:
+			text.color = Color.cyan;
+			break;
+		case Sentence.Types.Wrong:
+			break;
+		}
+
 		var posTween = item.GetComponent<PositionTween> ();
 		posTween.from = wordStartMark.localPosition;
 		posTween.to = itemHide.localPosition;
@@ -128,6 +147,10 @@ public class SpeechManager : MonoBehaviour
 	void TransformNext ()
 	{
 		var item = wordItems [nextWordID];
+		var word = currentSentence [nextWordID];
+
+		// TODO 对错误回合的处理
+
 		item.SetParent (noteGroup);
 		item.Find ("Text").gameObject.SetActive (false);
 		item.Find ("Note").gameObject.SetActive (true);
@@ -136,7 +159,6 @@ public class SpeechManager : MonoBehaviour
 		posTween.from = item.localPosition;
 
 		var posTo = Vector3.zero;
-		var word = currentSentence [nextWordID];
 		posTo.x = (word.time / currentSentence.totalTime - 0.5f) * noteBarLength;
 		posTween.to = posTo;
 
@@ -173,5 +195,12 @@ public class SpeechManager : MonoBehaviour
 	public void EndWave ()
 	{
 		GameManager.instance.EndWave ();
+	}
+
+	public void Interrupt ()
+	{
+		if (GameManager.instance.status == GameManager.Status.InSpeech) {
+			currentWord.interrupted = true;
+		}
 	}
 }

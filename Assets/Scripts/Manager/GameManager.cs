@@ -13,10 +13,10 @@ public class GameManager : MonoBehaviour
 		InWave,
 	};
 
-	public static Status status = Status.Idle;
+	public Status status = Status.Idle;
 
-	public static int peopleCount = 0;
-	public static int riseCount = 0;
+	public int peopleCount = 0;
+	public int riseCount = 0;
 
 
 	void Awake ()
@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 			break;
 		case Status.InSpeech:
 			Joker.Move (CursorManager.mousePosition);
+			// TODO 打断对话处理
+			// Joker.Interrupt ();
 			break;
 		case Status.InTransform:
 			break;
@@ -107,6 +109,7 @@ public class GameManager : MonoBehaviour
 
 	void OnSpeech ()
 	{
+		status = Status.InSpeech;
 		Person.inSpeech = true;
 
 		Debug.Log ("Speech Start!");
@@ -116,23 +119,18 @@ public class GameManager : MonoBehaviour
 
 	public void EndSpeech ()
 	{
+		status = Status.Idle;
 		Person.inSpeech = false;
 
 		Debug.Log ("Speech End!");
 
-		switch (speechManager.currentSentence.type) {
-		case Sentence.Types.Normal:
-			OnTransformToNote ();
-			break;
-		case Sentence.Types.High:
-			break;
-		case Sentence.Types.Wrong:
-			break;
-		}
+		OnTransformToNote ();
 	}
 
 	void OnTransformToNote ()
 	{
+		status = Status.InTransform;
+
 		Debug.Log ("Transform Start!");
 		
 		speechManager.TransformToNote ();
@@ -140,21 +138,17 @@ public class GameManager : MonoBehaviour
 
 	public void EndTransformToNote ()
 	{
+		status = Status.Idle;
+
 		Debug.Log ("Transform End!");
 
-		switch (speechManager.currentSentence.type) {
-		case Sentence.Types.Normal:
-			OnWave ();
-			break;
-		case Sentence.Types.High:
-			break;
-		case Sentence.Types.Wrong:
-			break;
-		}
+		OnWave ();
 	}
 
 	void OnWave ()
 	{
+		status = Status.InWave;
+
 		Debug.Log ("Wave Start!");
 
 		speechManager.StartWave ();
@@ -162,17 +156,11 @@ public class GameManager : MonoBehaviour
 
 	public void EndWave ()
 	{
+		status = Status.Idle;
+
 		Debug.Log ("Wave End!");
 
-		switch (speechManager.currentSentence.type) {
-		case Sentence.Types.Normal:
-			OnSpeech ();
-			break;
-		case Sentence.Types.High:
-			break;
-		case Sentence.Types.Wrong:
-			break;
-		}
+		OnSpeech ();
 	}
 
 	public void EndLevel ()
