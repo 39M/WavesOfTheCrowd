@@ -29,7 +29,8 @@ public class SpeechManager : MonoBehaviour
 
 	public Transform noteBar;
 	public Transform noteGroup;
-	public float noteBarLength;
+	[SerializeField]
+	float noteBarLength;
 	public Transform scanLine;
 	public AudioClip interrupt;
 
@@ -49,7 +50,7 @@ public class SpeechManager : MonoBehaviour
 
 	void Start ()
 	{
-		
+		noteBarLength = noteBar.GetComponent<RectTransform> ().rect.width;
 	}
 
 	void Update ()

@@ -26,7 +26,7 @@ public class CursorManager : MonoBehaviour
 
 	void Start ()
 	{
-		canvas = GameObject.Find ("UICanvas").GetComponent<Canvas> ();
+		canvas = GameManager.canvas;
 		rectTransform = GetComponent<RectTransform> ();
 		circle = GetComponent<Image> ();
 		circle.enabled = false;
