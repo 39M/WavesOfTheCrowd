@@ -139,6 +139,7 @@ public class Joker : MonoBehaviour
 	{
         if (wave)
         {
+            wave.GetComponent<Image>().color = bannerColor();
             wave.localScale = new Vector3(1, 0, 1);
             wave.DOScaleY(1, 2f).SetAutoKill(true).OnComplete<Tween>(delegate {
                 wave.DOScaleY(0, 2f).SetAutoKill(true);
@@ -146,6 +147,14 @@ public class Joker : MonoBehaviour
         }
     }
 
-	#endregion
+    public Color bannerColor()
+    {
+        var pos = transform.position;
+        var x = pos.x + Screen.width / 2;
+        var y = pos.y + Screen.height / 2;
+        var t2 = GameManager.speechManager.banner.texture;
+        return t2.GetPixel((int)x / Screen.width * t2.width, (int)y / Screen.height * t2.height);
+    }
+    #endregion
 
 }
