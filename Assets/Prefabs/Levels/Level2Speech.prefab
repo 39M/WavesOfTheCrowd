@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1000013015732426}
+  m_IsPrefabParent: 1
+--- !u!1 &1000013015732426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010846778094}
+  - 114: {fileID: 114000011894344780}
+  m_Layer: 0
+  m_Name: Level1Speech
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000010846778094
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013015732426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114000011894344780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013015732426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760c90a4a2c834fa5a7f1f24bc124930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speech:
+    sentences:
+    - type: 0
+      totalTime: 4
+      words:
+      - text: Make
+        time: 0.75
+        clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+      - text: America
+        time: 1.5
+        clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+      - text: Great
+        time: 2.25
+        clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+      - text: Again
+        time: 3
+        clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+    - type: 0
+      totalTime: 2.5
+      words:
+      - text: "\u54D4\u54D4\u54D4"
+        time: 0.5
+        clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+      - text: "\u54D4\u54D4\u54D4\u54D4\u54D4"
+        time: 1
+        clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
+      - text: "\u54D4\u54D4\u54D4\u54D4\u54D4\u54D4\u54D4"
+        time: 1.5
+        clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
