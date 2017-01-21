@@ -55,6 +55,7 @@ MonoBehaviour:
     sentences:
     - type: 0
       totalTime: 4
+      fontSize: 48
       words:
       - text: No
         time: 0.75
@@ -79,6 +80,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 0
       totalTime: 3
+      fontSize: 48
       words:
       - text: No
         time: 0.5
@@ -103,6 +105,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 1
       totalTime: 3
+      fontSize: 48
       words:
       - text: I Gonna
         time: 0.5
@@ -132,6 +135,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 0
       totalTime: 3
+      fontSize: 48
       words:
       - text: Now
         time: 1
@@ -156,6 +160,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 0
       totalTime: 3.5
+      fontSize: 48
       words:
       - text: Politicians
         time: 1
@@ -185,6 +190,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 0
       totalTime: 3
+      fontSize: 48
       words:
       - text: I'm a
         time: 1
@@ -209,6 +215,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 0
       totalTime: 3.5
+      fontSize: 48
       words:
       - text: I'm
         time: 1
@@ -238,6 +245,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 0
       totalTime: 3
+      fontSize: 48
       words:
       - text: Against
         time: 1
@@ -262,6 +270,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 0
       totalTime: 3
+      fontSize: 48
       words:
       - text: Shut
         time: 1
@@ -286,6 +295,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 0
       totalTime: 3
+      fontSize: 44
       words:
       - text: Compromise
         time: 1
@@ -310,6 +320,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 1
       totalTime: 5
+      fontSize: 36
       words:
       - text: Let's
         time: 1

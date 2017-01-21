@@ -127,13 +127,12 @@ public class SpeechManager : MonoBehaviour
 			text.DOText (badString, 1f, true, ScrambleMode.All);
 		}
 
-		switch (currentSentence.type) {
-		case Sentence.Types.High:
-			text.color = Color.cyan;
-			break;
-		case Sentence.Types.Wrong:
-			break;
-		}
+//		switch (currentSentence.type) {
+//		case Sentence.Types.High:
+//			break;
+//		case Sentence.Types.Wrong:
+//			break;
+//		}
 
 		var posTween = item.GetComponent<PositionTween> ();
 		posTween.from = wordStartMark.localPosition;
@@ -199,7 +198,7 @@ public class SpeechManager : MonoBehaviour
 				// TODO 飞到人群中爆炸(大)
 				newPosTween.onComplete = () => {
 					Debug.Log ("Big Bang");
-					Destroy(newItem.gameObject);
+					Destroy(newItem.gameObject, 1f);
 				};
 			} else {
 				// TODO 飞到人群中爆炸（小）
