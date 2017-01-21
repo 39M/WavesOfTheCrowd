@@ -29,6 +29,7 @@ public class SpeechManager : MonoBehaviour
 	public Transform noteGroup;
 	public float noteBarLength;
 	public Transform scanLine;
+	public AudioClip interrupt;
 
 	void Start ()
 	{

@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000010846778094}
   - 114: {fileID: 114000011894344780}
   m_Layer: 0
-  m_Name: Level1Speech
+  m_Name: Level2Speech
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,25 +58,32 @@ MonoBehaviour:
       words:
       - text: Make
         time: 0.75
+        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
       - text: America
         time: 1.5
+        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
       - text: Great
         time: 2.25
+        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
       - text: Again
         time: 3
+        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
     - type: 0
       totalTime: 2.5
       words:
       - text: "\u54D4\u54D4\u54D4"
         time: 0.5
+        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
       - text: "\u54D4\u54D4\u54D4\u54D4\u54D4"
         time: 1
+        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
       - text: "\u54D4\u54D4\u54D4\u54D4\u54D4\u54D4\u54D4"
         time: 1.5
+        dirty: 0
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}

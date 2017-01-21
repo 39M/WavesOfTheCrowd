@@ -22,8 +22,8 @@ public class Person : MonoBehaviour
 		var go=new GameObject( "person "+people.Count );
 		var p=go.AddComponent<Person>();
 		people.Add( p );
-		GameManager.peopleCount=people.Count;
-		GameManager.riseCount=risePeople.Count;
+		GameManager.instance.peopleCount=people.Count;
+		GameManager.instance.riseCount=risePeople.Count;
 	}
 
 	public static void RisePerson(Person person)

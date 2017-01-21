@@ -37,13 +37,22 @@ public class GameManager : MonoBehaviour
 			break;
 		case Status.InSpeech:
 			Joker.Move (CursorManager.mousePosition);
-			// TODO 打断对话处理
-			// Joker.Interrupt ();
+			if( speechManager.currentSentence.type==Sentence.Types.Wrong&&Input.GetMouseButton( 0 ) )
+			{
+				if( Joker.Interrupt( CursorManager.mousePosition, CursorManager.cursorSize ) )
+				{
+					audio.PlayOneShot( speechManager.interrupt );
+					speechManager.Interrupt();
+				}
+			}
 			break;
 		case Status.InTransform:
 			break;
 		case Status.InWave:
-			Joker.High (CursorManager.mousePosition, CursorManager.cursorSize);
+			if( Input.GetMouseButton( 0 ) )
+			{
+				Joker.High( CursorManager.mousePosition, CursorManager.cursorSize );
+			}
 			break;
 		}
 	
