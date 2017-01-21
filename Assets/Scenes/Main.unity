@@ -715,27 +715,27 @@ Prefab:
     - target: {fileID: 224000013333596194, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000013333596194, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000013333596194, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000013333596194, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -62.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000013333596194, guid: 9e5fd54b38b344e55ac9b942e3e5bd14,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 125
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e5fd54b38b344e55ac9b942e3e5bd14, type: 2}
@@ -1237,7 +1237,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1458,6 +1458,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7e034045af65f49ab8c4bc870641eda8, type: 3}
   booed: {fileID: 8300000, guid: 5f1b55a6adbae437db198e7d28b591e0, type: 3}
   interrupt: {fileID: 0}
+  openingSpeech: {fileID: 8300000, guid: 462f57b15d3534469b5418481a9cfc3f, type: 3}
 --- !u!4 &1806023833
 Transform:
   m_ObjectHideFlags: 0
@@ -1693,6 +1694,12 @@ Prefab:
       propertyPath: noteGroup
       value: 
       objectReference: {fileID: 447704481}
+    - target: {fileID: 114000010006389598, guid: d1a45bf21836540428c9c9dc90d555c1,
+        type: 2}
+      propertyPath: banner
+      value: 
+      objectReference: {fileID: 21300000, guid: eff9d91b40167401e86f7baa5b5dee5d,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1a45bf21836540428c9c9dc90d555c1, type: 2}
   m_IsPrefabParent: 0

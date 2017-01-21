@@ -9,4 +9,5 @@ public class AudioClipData : MonoBehaviour
 	public AudioClip booed;
 	public AudioClip interrupt;
 
+	public AudioClip openingSpeech;
 }

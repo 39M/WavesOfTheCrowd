@@ -30,7 +30,13 @@ public class GameManager : MonoBehaviour
 	{
 		Joker.Create ();
 		Person.Create (20);
-		OnSpeech ();
+		Invoke ("OnStart", 2);
+	}
+
+	void OnStart ()
+	{
+		audio.PlayOneShot (audioClipData.openingSpeech);
+		Invoke ("OnSpeech", audioClipData.openingSpeech.length + 1);
 	}
 
 	void Update ()

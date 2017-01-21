@@ -33,7 +33,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013015732426}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55,6 +55,7 @@ MonoBehaviour:
     sentences:
     - type: 0
       totalTime: 4
+      fontSize: 48
       words:
       - text: Make
         time: 0.75
@@ -79,6 +80,7 @@ MonoBehaviour:
       interrupted: 0
     - type: 0
       totalTime: 2.5
+      fontSize: 48
       words:
       - text: "\u54D4\u54D4\u54D4"
         time: 0.5
