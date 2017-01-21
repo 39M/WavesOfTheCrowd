@@ -4,6 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
 	public SpeechData speechData;
+	public AudioClipData audioClipData;
 
 	public enum Status
 	{
@@ -39,12 +40,6 @@ public class GameManager : MonoBehaviour
 			break;
 		case Status.InSpeech:
 			Joker.Move (CursorManager.mousePosition);
-			if (speechManager.currentSentence.type == Sentence.Types.Wrong && Input.GetMouseButton (0)) {
-				if (Joker.Interrupt (CursorManager.mousePosition, CursorManager.cursorSize)) {
-					audio.PlayOneShot (speechManager.interrupt);
-					speechManager.Interrupt ();
-				}
-			}
 			break;
 		case Status.InTransform:
 			break;
@@ -52,13 +47,23 @@ public class GameManager : MonoBehaviour
 			if (Input.GetMouseButtonDown (0)) {
 				if (waveManager.highTime > 0) {
 					waveManager.highTime--;
+					audio.PlayOneShot (audioClipData.highs [Random.Range (0, audioClipData.highs.Count)]);
 					Person.attractPeople = 0;
-					Joker.High (CursorManager.mousePosition, CursorManager.cursorSize);
+					Joker.High (CursorManager.mousePosition,
+						CursorManager.cursorSize,
+						speechManager.currentSentence.type == Sentence.Types.HandsUp
+					);
 				}
 			}
 			break;
 		}
-	
+	}
+
+	public void onPresidentClick ()
+	{
+		Joker.Interrupt (CursorManager.mousePosition, CursorManager.cursorSize);
+		speechManager.Interrupt ();
+		audio.PlayOneShot (audioClipData.interrupt);
 	}
 
 	private static GameManager gameManager = null;

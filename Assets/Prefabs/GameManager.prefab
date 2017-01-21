@@ -58,11 +58,15 @@ MonoBehaviour:
   currentSentence:
     type: 0
     totalTime: 0
+    fontSize: 48
     words: []
+    interrupted: 0
   currentWord:
     text: 
     time: 0
     clip: {fileID: 0}
+    dirty: 0
+    interrupted: 0
   nextSentenceID: 0
   nextWordID: 0
   wordStartMark: {fileID: 0}
@@ -71,8 +75,8 @@ MonoBehaviour:
   wordItemPrefab: {fileID: 0}
   noteBar: {fileID: 0}
   noteGroup: {fileID: 0}
-  noteBarLength: 1920
-  scanLine: {fileID: 0}
+  noteBarLength: 0
+  banner: {fileID: 0}
 --- !u!114 &114000010457345208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,6 +89,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechData: {fileID: 0}
+  audioClipData: {fileID: 0}
+  status: 0
+  peopleCount: 0
+  riseCount: 0
 --- !u!114 &114000011531326360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -96,3 +104,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212a6c6b49cbf463aba51a0b418fb7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sentence:
+    type: 0
+    totalTime: 0
+    fontSize: 48
+    words: []
+    interrupted: 0
+  currentWord:
+    text: 
+    time: 0
+    clip: {fileID: 0}
+    dirty: 0
+    interrupted: 0
+  nextWord:
+    text: 
+    time: 0
+    clip: {fileID: 0}
+    dirty: 0
+    interrupted: 0
+  highTime: 1
