@@ -203,7 +203,7 @@ MonoBehaviour:
         dirty: 0
         interrupted: 0
       interrupted: 0
-    - type: 0
+    - type: 3
       totalTime: 3
       fontSize: 48
       words:
@@ -348,7 +348,7 @@ MonoBehaviour:
         dirty: 0
         interrupted: 0
       interrupted: 0
-    - type: 1
+    - type: 3
       totalTime: 5
       fontSize: 36
       words:
