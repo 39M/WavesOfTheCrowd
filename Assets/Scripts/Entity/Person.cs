@@ -91,6 +91,25 @@ public class Person : MonoBehaviour
         clone.Clear();
 	}
 
+	public static void Buster(Vector2 center, float radius, float level)
+		var sqrt = radius * radius;
+		var clone = new List<Person>();
+		var count = 0;
+		clone.AddRange(people);
+		foreach (var p in clone) {
+			var delta = center - p.location;
+			if (delta.x * delta.x + delta.y * delta.y < sqrt) {
+				p.Buster(level);
+				count++;
+			}
+			if (count > 20)
+			{
+				break;
+			}
+		}
+		clone.Clear();
+	}
+
 	#endregion
 
 
@@ -171,6 +190,21 @@ public class Person : MonoBehaviour
 		}
 	}
 
+	void Buster(float level)
+	{
+		var rised = isRise;
+
+		sentiment -= level;
+		//already do it in update
+		//sentiment = Mathf.Clamp (sentiment, minSenti, maxSenti);
+		emotion.sprite = down;
+		emotion.color = Color.white;
+		var fadeTime = 0.6f;
+		emotion.DOFade(0, fadeTime).SetAutoKill(true);
+
+		LowerSentiment (rised & !isRise);
+	}
+
     public void HandsUp()
     {
         if (!wave)
@@ -187,6 +221,25 @@ public class Person : MonoBehaviour
         }
     }
 
+	void LowerSentiment(bool fromRise)
+	{
+		if (fromRise) {
+			CalmPerson(this);
+		}
+		if(people.Contains(this))
+		{
+			if (sentiment < 30 )
+			{
+				emotion.sprite = down;
+				emotion.color = Color.white * (30 - sentiment) / 30;
+			}
+			if (sentiment == 0)
+			{
+				LeavePerson(this);
+			}
+		}
+	}
+
     public Color bannerColor()
     {
         var t2 = GameManager.speechManager.banner.texture;
@@ -197,6 +250,7 @@ public class Person : MonoBehaviour
         int y = (int)(locY * t2.height);
         return t2.GetPixel(x, y);
     }
+
     void Update ()
 	{
         GetComponent<Image>().SetNativeSize();
@@ -205,21 +259,7 @@ public class Person : MonoBehaviour
             var rised = isRise;
 			sentiment -= Time.deltaTime * calm;
 			sentiment = Mathf.Clamp (sentiment, minSenti, maxSenti);
-			if (rised && !isRise) {
-                CalmPerson(this);
-			}
-            if(people.Contains(this))
-            {
-                if (sentiment < 30 )
-                {
-                    emotion.sprite = down;
-                    emotion.color = Color.white * (30 - sentiment) / 30;
-                }
-                if (sentiment == 0)
-                {
-                    LeavePerson(this);
-                }
-            }
+			LowerSentiment (rised & !isRise);
 		}
 	}
 

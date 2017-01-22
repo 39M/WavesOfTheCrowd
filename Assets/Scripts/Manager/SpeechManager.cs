@@ -198,12 +198,14 @@ public class SpeechManager : MonoBehaviour
 				// TODO 飞到人群中爆炸(大)
 				newPosTween.onComplete = () => {
 					Debug.Log ("Big Bang");
+					Person.Buster (newPosTween.to, 1000, 20);
 					Destroy (newItem.gameObject, 1f);
 				};
 			} else {
 				// TODO 飞到人群中爆炸（小）
 				newPosTween.onComplete = () => {
 					Debug.Log ("Small Bang");
+					Person.Buster (newPosTween.to, 1000, 5);
 					Destroy (newItem.gameObject, 1f);
 				};
 			}

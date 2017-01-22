@@ -41,11 +41,13 @@ public class GameManager : MonoBehaviour
 
 	void Update ()
 	{
+		//do move expected inwave
+		Joker.Move (CursorManager.mousePosition);
+
 		switch (status) {
 		case Status.Idle:
 			break;
 		case Status.InSpeech:
-			Joker.Move (CursorManager.mousePosition);
 			break;
 		case Status.InTransform:
 			break;

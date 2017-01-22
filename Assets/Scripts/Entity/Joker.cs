@@ -23,6 +23,12 @@ public class Joker : MonoBehaviour
 
 	public static void Move (Vector2 mouse)
 	{
+		if (GameManager.instance.status == GameManager.Status.InWave)
+		{
+			preMouse = mouse;
+			return;
+		}
+		
 		if (preMouse == Vector2.zero) {
 			preMouse = mouse;
 		}
