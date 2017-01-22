@@ -57,6 +57,7 @@ GameObject:
   - 114: {fileID: 114000010743046088}
   - 95: {fileID: 95000011363134044}
   - 114: {fileID: 114000012833756774}
+  - 223: {fileID: 223000011854463026}
   m_Layer: 5
   m_Name: person
   m_TagString: Untagged
@@ -201,6 +202,25 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010044317556}
+--- !u!223 &223000011854463026
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014074982418}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
 --- !u!224 &224000010092144712
 RectTransform:
   m_ObjectHideFlags: 1

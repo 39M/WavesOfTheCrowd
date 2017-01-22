@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -1032,7 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2106dc6fbfa1c2d4ea62103e44c2e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 600, y: 300}
+  radius: 300
   high: 30
   isBreak: 0
   isMove: 0
@@ -1421,7 +1421,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &224000010120335326
 RectTransform:
