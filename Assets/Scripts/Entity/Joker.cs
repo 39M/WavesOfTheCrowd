@@ -32,6 +32,8 @@ public class Joker : MonoBehaviour
 			preMouse = mouse;
 		}
 		var delta = mouse - preMouse;
+		if (delta.magnitude > 0.1)
+			delta = Vector2.zero;
 
 		foreach (var j in jokers) {
 			var vect = new Vector2 (j.transform.position.x, j.transform.position.y);
@@ -110,7 +112,7 @@ public class Joker : MonoBehaviour
 		}
 		var distance = Vector2.SqrMagnitude (mouse - location);
 		location -= delta * (1 - distance / moveRadius) * sensitive;
-		location = new Vector2 (Mathf.Clamp (location.x, clamp.xMin, clamp.xMax), Mathf.Clamp (location.y, clamp.yMin, clamp.yMax));
+//		location = new Vector2 (Mathf.Clamp (location.x, clamp.xMin, clamp.xMax), Mathf.Clamp (location.y, clamp.yMin, clamp.yMax));
 	}
 
 	public void High (bool handsUp)
