@@ -146,7 +146,7 @@ public class Person : MonoBehaviour
 	[SerializeField]
 	Transform wave;
 	[SerializeField]
-	float calm = 0.1f;
+	float calm = 0.025f;
 	[SerializeField]
 	int minSenti = 0;
 	[SerializeField]

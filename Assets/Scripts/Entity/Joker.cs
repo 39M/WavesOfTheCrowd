@@ -89,7 +89,7 @@ public class Joker : MonoBehaviour
 	}
 
 	public float radius = 300;
-	public float high = 10;
+	public float high = 40;
 	public bool isBreak = false;
 	public bool isMove = false;
 	public bool isRise = false;
