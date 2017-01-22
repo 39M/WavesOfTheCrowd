@@ -192,20 +192,20 @@ public class SpeechManager : MonoBehaviour
 			var newItem = (Instantiate (item.gameObject, wordGroup) as GameObject).transform;
 			var newPosTween = newItem.GetComponent<PositionTween> ();
 
-			if (word.dirty) {
+			if (word.interrupted) {
+				// TODO 飞到人群中爆炸（小）
+				newPosTween.onComplete = () => {
+					Debug.Log ("Small Bang");
+					Person.Buster (newPosTween.to, 400, 5);
+					Destroy (newItem.gameObject, 1f);
+				};
+			} else {
 				var text = newItem.Find ("Text").GetComponent<Text> ();
 				text.color = Color.red;
 				// TODO 飞到人群中爆炸(大)
 				newPosTween.onComplete = () => {
 					Debug.Log ("Big Bang");
-					Person.Buster (newPosTween.to, 1000, 20);
-					Destroy (newItem.gameObject, 1f);
-				};
-			} else {
-				// TODO 飞到人群中爆炸（小）
-				newPosTween.onComplete = () => {
-					Debug.Log ("Small Bang");
-					Person.Buster (newPosTween.to, 1000, 5);
+					Person.Buster (newPosTween.to, 800, 10);
 					Destroy (newItem.gameObject, 1f);
 				};
 			}

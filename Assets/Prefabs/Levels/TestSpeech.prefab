@@ -65,7 +65,7 @@ MonoBehaviour:
       - text: America
         time: 1.5
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
-        dirty: 1
+        dirty: 0
         interrupted: 0
       - text: Great
         time: 2.25
@@ -95,6 +95,6 @@ MonoBehaviour:
       - text: "\u54D4\u54D4\u54D4\u54D4\u54D4\u54D4\u54D4"
         time: 1.5
         clip: {fileID: 8300000, guid: 4113510be527a4ff0848b1a254d6d5c3, type: 3}
-        dirty: 0
+        dirty: 1
         interrupted: 0
       interrupted: 0

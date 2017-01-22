@@ -842,7 +842,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1054,12 +1054,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b242156c662ce47d29ec3b154a309ad9, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1172340570 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000010702139400, guid: c71d689d43e498a45b7154d9bdcfddd3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1529706730}
-  m_Script: {fileID: 11500000, guid: 760c90a4a2c834fa5a7f1f24bc124930, type: 3}
 --- !u!1001 &1244061984
 Prefab:
   m_ObjectHideFlags: 0
@@ -1658,7 +1652,7 @@ Prefab:
         type: 2}
       propertyPath: speechData
       value: 
-      objectReference: {fileID: 1172340570}
+      objectReference: {fileID: 1995719257}
     - target: {fileID: 114000010457345208, guid: d1a45bf21836540428c9c9dc90d555c1,
         type: 2}
       propertyPath: audioClipData
@@ -1703,3 +1697,9 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1a45bf21836540428c9c9dc90d555c1, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1995719257 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011894344780, guid: 0a10a2ce7d63e4b35a262ddc226f4c65,
+    type: 2}
+  m_PrefabInternal: {fileID: 1270488388}
+  m_Script: {fileID: 11500000, guid: 760c90a4a2c834fa5a7f1f24bc124930, type: 3}
