@@ -31,7 +31,7 @@ public class Person : MonoBehaviour
 			p.manKind = (ManKind)Random.Range (0, 4);
 			p.animator.Play (p.manKind.ToString () + "_stand");
 			p.transform.SetParent (canvas.transform, false);
-			p.location = new Vector2 (Random.Range (-500, 500), Random.Range (-500, 500));
+			p.location = new Vector2 (Random.Range (-800, 800), Random.Range (-500, 500));
 
 			var image = p.GetComponent<Image> ();
 			image.color = new Color (1, 1, 1, 0);
