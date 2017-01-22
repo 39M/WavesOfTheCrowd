@@ -126,7 +126,7 @@ MonoBehaviour:
   down: {fileID: 21300000, guid: 0debd107824de4a64bbe15c52a47b462, type: 3}
   leave: {fileID: 21300000, guid: 8ccb0decfae9140c59ef55072eef1cbd, type: 3}
   wave: {fileID: 224000012885474972}
-  calm: 3
+  calm: 2
   minSenti: 0
   maxSenti: 100
   sentiment: 50
