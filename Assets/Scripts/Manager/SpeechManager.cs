@@ -106,7 +106,7 @@ public class SpeechManager : MonoBehaviour
 		// 显示单词 播放动画
 		currentWord = currentSentence [nextWordID];
 		if (currentWord.clip) {
-			GameManager.audio.PlayOneShot (currentWord.clip);
+			GameManager.instance.speechSource.PlayOneShot (currentWord.clip);
 		}
 
 		var itemHide = wordItemsHide [nextWordID];
@@ -162,6 +162,7 @@ public class SpeechManager : MonoBehaviour
 
 	void EndSpeech ()
 	{
+		GameManager.instance.speechSource.volume = 1;
 		GameManager.instance.EndSpeech ();
 	}
 
@@ -261,6 +262,7 @@ public class SpeechManager : MonoBehaviour
 		if (!currentSentence.interrupted) {
 			if (GameManager.instance.status == GameManager.Status.InSpeech) {
 				currentSentence.interrupted = true;
+				GameManager.instance.speechSource.volume = 0.25f;
 				// 播放音效
 			}
 		}

@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
 	public SpeechData speechData;
 	public AudioClipData audioClipData;
+	public AudioSource speechSource;
 
 	public enum Status
 	{
@@ -42,7 +43,8 @@ public class GameManager : MonoBehaviour
 	void Update ()
 	{
 		//do move expected inwave
-		Joker.Move (CursorManager.mousePosition);
+		if (Input.GetMouseButton (0))
+			Joker.Move (CursorManager.mousePosition);
 
 		switch (status) {
 		case Status.Idle:
@@ -157,7 +159,6 @@ public class GameManager : MonoBehaviour
 	public void EndSpeech ()
 	{
 		status = Status.Idle;
-		Person.inSpeech = false;
 
 		Debug.Log ("Speech End!");
 
@@ -175,6 +176,7 @@ public class GameManager : MonoBehaviour
 
 	public void EndTransformToNote ()
 	{
+		Person.inSpeech = false;
 		status = Status.Idle;
 
 		Debug.Log ("Transform End!");

@@ -54,102 +54,102 @@ MonoBehaviour:
   speech:
     sentences:
     - type: 0
-      totalTime: 4.75
+      totalTime: 6
       fontSize: 48
       words:
       - text: No
-        time: 0.75
+        time: 1
         clip: {fileID: 8300000, guid: 2b38cb9557d444301add9d4d31f04079, type: 3}
         dirty: 0
         interrupted: 0
       - text: Dream
-        time: 1.5
+        time: 2
         clip: {fileID: 8300000, guid: e1b2dc816e76f484a92b8023537652f4, type: 3}
         dirty: 0
         interrupted: 0
       - text: Is
-        time: 2.25
+        time: 3
         clip: {fileID: 8300000, guid: dc45e8be2bb394673be246ec66b432c4, type: 3}
         dirty: 0
         interrupted: 0
       - text: Too
-        time: 3
+        time: 4
         clip: {fileID: 8300000, guid: 3c73d96c6e51c436ba55b06af7511e3b, type: 3}
         dirty: 0
         interrupted: 0
       - text: Big
-        time: 3.75
+        time: 5
         clip: {fileID: 8300000, guid: b5bb0b1d7ed2347af95fbb3db3b4e0fb, type: 3}
         dirty: 0
         interrupted: 0
       interrupted: 0
     - type: 0
-      totalTime: 3.5
+      totalTime: 6
       fontSize: 48
       words:
       - text: No
-        time: 0.5
+        time: 1
         clip: {fileID: 8300000, guid: 509a1d308f46d4a3d8b8e4eb92b8c813, type: 3}
         dirty: 0
         interrupted: 0
       - text: Challenge
-        time: 1
+        time: 2
         clip: {fileID: 8300000, guid: 91a8bad0093f84a25996715795695b30, type: 3}
         dirty: 0
         interrupted: 0
       - text: Is
-        time: 1.5
+        time: 3
         clip: {fileID: 8300000, guid: 03896c8d472d643dc9c64e75b62bee6e, type: 3}
         dirty: 0
         interrupted: 0
       - text: Too
-        time: 2
+        time: 4
         clip: {fileID: 8300000, guid: 9bf6d6aea00694073b58e0e703569e62, type: 3}
         dirty: 0
         interrupted: 0
       - text: Great
-        time: 2.5
+        time: 5
         clip: {fileID: 8300000, guid: f88861d5371734aca85c2e606d75146f, type: 3}
         dirty: 0
         interrupted: 0
       interrupted: 0
     - type: 1
-      totalTime: 4
+      totalTime: 7
       fontSize: 48
       words:
       - text: I
-        time: 0.5
+        time: 1
         clip: {fileID: 8300000, guid: 00d21bdecf9f54dab8771803b2b9dfb8, type: 3}
         dirty: 0
         interrupted: 0
       - text: Gonna
-        time: 1
+        time: 2
         clip: {fileID: 8300000, guid: 15ebee8b80371481a963d94a2eb7c8ef, type: 3}
         dirty: 0
         interrupted: 0
       - text: Make
-        time: 1.5
+        time: 3
         clip: {fileID: 8300000, guid: 58bc728094d30489c84b09b336820fdc, type: 3}
         dirty: 0
         interrupted: 0
       - text: America
-        time: 2
+        time: 4
         clip: {fileID: 8300000, guid: 66f80f0864d6542f099f2118ed472b8b, type: 3}
         dirty: 0
         interrupted: 0
       - text: Great
-        time: 2.5
+        time: 5
         clip: {fileID: 8300000, guid: 1a1b4dc0a0f354748ac7bd3279cbdc52, type: 3}
         dirty: 0
         interrupted: 0
       - text: Again
-        time: 3
+        time: 6
         clip: {fileID: 8300000, guid: 2de738f7c0daa4500a38dde2b42219a0, type: 3}
         dirty: 0
         interrupted: 0
       interrupted: 0
     - type: 0
-      totalTime: 3
+      totalTime: 5
       fontSize: 48
       words:
       - text: Now
@@ -158,23 +158,23 @@ MonoBehaviour:
         dirty: 0
         interrupted: 0
       - text: I'm
-        time: 1.5
+        time: 2
         clip: {fileID: 8300000, guid: 759bc9550387e4faf8a41829bd67bf77, type: 3}
         dirty: 0
         interrupted: 0
       - text: The
-        time: 2
+        time: 3
         clip: {fileID: 8300000, guid: 8520bb3af30264dd19b48966ba5bff39, type: 3}
         dirty: 0
         interrupted: 0
       - text: President
-        time: 2.5
+        time: 4
         clip: {fileID: 8300000, guid: 579b3c5df89b748f5b0b79d5c4f42f6f, type: 3}
         dirty: 0
         interrupted: 0
       interrupted: 0
     - type: 0
-      totalTime: 3.5
+      totalTime: 6
       fontSize: 48
       words:
       - text: Politicians
@@ -183,28 +183,28 @@ MonoBehaviour:
         dirty: 0
         interrupted: 0
       - text: All
-        time: 1.5
+        time: 2
         clip: {fileID: 8300000, guid: 3fa81dc4af7a842fa934257d2de9cf6f, type: 3}
         dirty: 0
         interrupted: 0
       - text: Talk
-        time: 2
+        time: 3
         clip: {fileID: 8300000, guid: 45402c7ee2eb34d1f968fa2c96706371, type: 3}
         dirty: 0
         interrupted: 0
       - text: No
-        time: 2.5
+        time: 4
         clip: {fileID: 8300000, guid: 1ffae8feff0cd488eb64fc03bdc31bee, type: 3}
         dirty: 0
         interrupted: 0
       - text: Action
-        time: 3
+        time: 5
         clip: {fileID: 8300000, guid: 060c76c042ffa4040ad4c904f64013e1, type: 3}
         dirty: 0
         interrupted: 0
       interrupted: 0
     - type: 3
-      totalTime: 3
+      totalTime: 5
       fontSize: 48
       words:
       - text: I'm a
@@ -213,23 +213,23 @@ MonoBehaviour:
         dirty: 0
         interrupted: 0
       - text: Really
-        time: 1.5
+        time: 2
         clip: {fileID: 8300000, guid: 57aaf49e0f53f4aa0b756827afc4e8f3, type: 3}
         dirty: 0
         interrupted: 0
       - text: Smart
-        time: 2
+        time: 3
         clip: {fileID: 8300000, guid: 8f37c68c838fd478cbd5509c90915279, type: 3}
         dirty: 0
         interrupted: 0
       - text: Guy
-        time: 2.5
+        time: 4
         clip: {fileID: 8300000, guid: a4cfad6c4f52d4ca8a4c7fbcf66ad951, type: 3}
         dirty: 0
         interrupted: 0
       interrupted: 0
     - type: 0
-      totalTime: 4.5
+      totalTime: 7
       fontSize: 48
       words:
       - text: I'm
@@ -238,33 +238,33 @@ MonoBehaviour:
         dirty: 0
         interrupted: 0
       - text: Going
-        time: 1.5
+        time: 2
         clip: {fileID: 8300000, guid: 6b972159c0de94e4a9a7e03e12e8c3f2, type: 3}
         dirty: 0
         interrupted: 0
       - text: To Do
-        time: 2
+        time: 3
         clip: {fileID: 8300000, guid: 7f112c301d8944bdcacb5bfc69d43e96, type: 3}
         dirty: 0
         interrupted: 0
       - text: A
-        time: 2.5
+        time: 4
         clip: {fileID: 8300000, guid: 47d0f5029f9d144f5b537a287f667318, type: 3}
         dirty: 0
         interrupted: 0
       - text: Fucking
-        time: 3
+        time: 5
         clip: {fileID: 8300000, guid: 0d91398ec0d604bd4b3adbc0142fdb58, type: 3}
         dirty: 1
         interrupted: 0
       - text: Wall
-        time: 3.5
+        time: 6
         clip: {fileID: 8300000, guid: be709d3a3bf384ccfaaf331831a93535, type: 3}
         dirty: 1
         interrupted: 0
       interrupted: 0
     - type: 0
-      totalTime: 3
+      totalTime: 5
       fontSize: 48
       words:
       - text: Against
@@ -273,23 +273,23 @@ MonoBehaviour:
         dirty: 0
         interrupted: 0
       - text: Immigrant
-        time: 1.5
+        time: 2
         clip: {fileID: 8300000, guid: b9424f5ae37574a4f9a2dc86ae81b3bd, type: 3}
         dirty: 0
         interrupted: 0
       - text: From
-        time: 2
+        time: 3
         clip: {fileID: 8300000, guid: 7c176c2aa434b424893e6d4fbb58c6b2, type: 3}
         dirty: 0
         interrupted: 0
       - text: Mexico
-        time: 2.5
+        time: 4
         clip: {fileID: 8300000, guid: 2ec74c958cf4b450c8597d3839765037, type: 3}
         dirty: 0
         interrupted: 0
       interrupted: 0
     - type: 0
-      totalTime: 3
+      totalTime: 5
       fontSize: 48
       words:
       - text: Shut
@@ -298,23 +298,23 @@ MonoBehaviour:
         dirty: 1
         interrupted: 0
       - text: Up
-        time: 1.5
+        time: 2
         clip: {fileID: 8300000, guid: 7f94627721e3f429dbfb8a7eb20a4897, type: 3}
         dirty: 1
         interrupted: 0
       - text: You
-        time: 2
+        time: 3
         clip: {fileID: 8300000, guid: eaff72c9e6d00474986969cd94814f14, type: 3}
         dirty: 0
         interrupted: 0
       - text: Idot
-        time: 2.5
+        time: 4
         clip: {fileID: 8300000, guid: 649bdf183201e4d7b88f4354e0914f4b, type: 3}
         dirty: 1
         interrupted: 0
       interrupted: 0
     - type: 0
-      totalTime: 4.5
+      totalTime: 7
       fontSize: 44
       words:
       - text: Compromise
@@ -323,33 +323,33 @@ MonoBehaviour:
         dirty: 0
         interrupted: 0
       - text: Is
-        time: 1.5
+        time: 2
         clip: {fileID: 8300000, guid: 249cdac609d974f16ad7e111ff2404e9, type: 3}
         dirty: 0
         interrupted: 0
       - text: The
-        time: 2
+        time: 3
         clip: {fileID: 8300000, guid: 7e5ba9a38442e4ebda30248f9662f54c, type: 3}
         dirty: 0
         interrupted: 0
       - text: Equivalent
-        time: 2.5
+        time: 4
         clip: {fileID: 8300000, guid: a0e08e61ad4624ce88212a67b7af6270, type: 3}
         dirty: 0
         interrupted: 0
       - text: To
-        time: 3
+        time: 5
         clip: {fileID: 8300000, guid: 9bf6d6aea00694073b58e0e703569e62, type: 3}
         dirty: 0
         interrupted: 0
       - text: Defeat
-        time: 3.5
+        time: 6
         clip: {fileID: 8300000, guid: db307d6cc4377416e973aac323ba8657, type: 3}
         dirty: 0
         interrupted: 0
       interrupted: 0
     - type: 3
-      totalTime: 5
+      totalTime: 8
       fontSize: 36
       words:
       - text: Let's
@@ -358,32 +358,32 @@ MonoBehaviour:
         dirty: 0
         interrupted: 0
       - text: Make
-        time: 1.5
+        time: 2
         clip: {fileID: 8300000, guid: 43fc14238f6324773ad12ef587652d17, type: 3}
         dirty: 0
         interrupted: 0
       - text: America
-        time: 2
+        time: 3
         clip: {fileID: 8300000, guid: aab2fe003595f4248a2e5f8a5cb09514, type: 3}
         dirty: 0
         interrupted: 0
       - text: Greater
-        time: 2.5
+        time: 4
         clip: {fileID: 8300000, guid: ec47e0e25ef2d46a79e714c252dd54f1, type: 3}
         dirty: 0
         interrupted: 0
       - text: Than
-        time: 3
+        time: 5
         clip: {fileID: 8300000, guid: 2d6d8cbbe23e34a47882fff69a18a0b9, type: 3}
         dirty: 0
         interrupted: 0
       - text: Ever
-        time: 3.5
+        time: 6
         clip: {fileID: 8300000, guid: 3e024c870728248538fc4ef37be8ec88, type: 3}
         dirty: 0
         interrupted: 0
       - text: Before
-        time: 4
+        time: 7
         clip: {fileID: 8300000, guid: 067f15527adae4486a07d927d8c001e0, type: 3}
         dirty: 0
         interrupted: 0

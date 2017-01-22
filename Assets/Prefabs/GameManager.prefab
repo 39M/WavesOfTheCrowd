@@ -76,7 +76,8 @@ MonoBehaviour:
   noteBar: {fileID: 0}
   noteGroup: {fileID: 0}
   noteBarLength: 0
-  banner: {fileID: 0}
+  banner: {fileID: 21300000, guid: eff9d91b40167401e86f7baa5b5dee5d, type: 3}
+  burst: {fileID: 198000012085453214, guid: 8b5610500223e49518fcc3d7aba7d04c, type: 2}
 --- !u!114 &114000010457345208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speechData: {fileID: 0}
   audioClipData: {fileID: 0}
+  speechSource: {fileID: 0}
   status: 0
   peopleCount: 0
   riseCount: 0
