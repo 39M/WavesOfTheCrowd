@@ -195,6 +195,7 @@ public class Person : MonoBehaviour
 	void Buster (float level)
 	{
 		var rised = isRise;
+		var normal = isNormal;
 
 		sentiment -= level;
 		//already do it in update
@@ -204,7 +205,7 @@ public class Person : MonoBehaviour
 		var fadeTime = 0.6f;
 		emotion.DOFade (0, fadeTime).SetAutoKill (true);
 
-		LowerSentiment (rised & !isRise);
+		LowerSentiment (rised && !isRise, normal && !isNormal);
 	}
 
 	void ConfusePerson()
@@ -238,10 +239,6 @@ public class Person : MonoBehaviour
 			ConfusePerson ();
 		}
 		if (people.Contains (this)) {
-			if (sentiment < 30) {
-				emotion.sprite = down;
-				emotion.color = Color.white * (30 - sentiment) / 30;
-			}
 			if (sentiment == 0) {
 				LeavePerson (this);
 			}
