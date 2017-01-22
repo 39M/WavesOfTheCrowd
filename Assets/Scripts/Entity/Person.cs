@@ -52,15 +52,12 @@ public class Person : MonoBehaviour
 
 	static void CalmPerson (Person person)
 	{
-		person.emotion.sprite = person.down;
-		person.emotion.color = Color.white;
-		person.emotion.DOFade (0, 0.6f).SetAutoKill (true);
-		person.animator.Play (person.manKind.ToString () + "_stand");
+		person.ConfusePerson();
 		risePeople.Remove (person);
 		attractPeople--;
 		GameManager.instance.riseCount = risePeople.Count;
 	}
-
+	
 	static void LeavePerson (Person person)
 	{
 		person.GetComponent<Image> ().DOFade (0, 0.5f).SetAutoKill ();
@@ -160,6 +157,12 @@ public class Person : MonoBehaviour
 		}
 	}
 
+	public bool isNormal {
+		get {
+			return sentiment > 30;
+		}
+	}
+
 	Animator _animator;
 
 	Animator animator {
@@ -204,6 +207,14 @@ public class Person : MonoBehaviour
 		LowerSentiment (rised & !isRise);
 	}
 
+	void ConfusePerson()
+	{
+		emotion.sprite = down;
+		emotion.color = Color.white;
+		emotion.DOFade (0, 0.6f).SetAutoKill (true);
+		animator.Play (manKind.ToString () + "_stand");
+	}
+	
 	public void HandsUp ()
 	{
 		if (!wave) {
@@ -218,10 +229,13 @@ public class Person : MonoBehaviour
 		}
 	}
 
-	void LowerSentiment (bool fromRise)
+	void LowerSentiment (bool fromRise, bool fromNormal)
 	{
 		if (fromRise) {
 			CalmPerson (this);
+		}
+		if (fromNormal) {
+			ConfusePerson ();
 		}
 		if (people.Contains (this)) {
 			if (sentiment < 30) {
@@ -250,9 +264,10 @@ public class Person : MonoBehaviour
 		GetComponent<Image> ().SetNativeSize ();
 		if (!inSpeech) {
 			var rised = isRise;
+			var normal = isNormal;
 			sentiment -= Time.deltaTime * calm;
 			sentiment = Mathf.Clamp (sentiment, minSenti, maxSenti);
-			LowerSentiment (rised & !isRise);
+			LowerSentiment (rised && !isRise, normal && !isNormal);
 		}
 	}
 
