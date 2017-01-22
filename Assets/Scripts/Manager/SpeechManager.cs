@@ -197,9 +197,6 @@ public class SpeechManager : MonoBehaviour
 				// TODO 飞到人群中爆炸（小）
 				newPosTween.onComplete = () => {
 					Debug.Log ("Small Bang");
-					var t = (Instantiate (burst.gameObject, wordGroup, false) as GameObject).transform;
-					t.localPosition = newPosTween.to;
-					t.localScale *= 0.75f;
 					Person.Buster (newPosTween.to, 400, 5);
 					Destroy (newItem.gameObject);
 				};
@@ -209,9 +206,6 @@ public class SpeechManager : MonoBehaviour
 				// TODO 飞到人群中爆炸(大)
 				newPosTween.onComplete = () => {
 					Debug.Log ("Big Bang");
-					var t = (Instantiate (burst.gameObject, wordGroup, false) as GameObject).transform;
-					t.localPosition = newPosTween.to;
-					t.localScale *= 1.25f;
 					Person.Buster (newPosTween.to, 800, 10);
 					Destroy (newItem.gameObject);
 				};
