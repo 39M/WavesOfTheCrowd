@@ -23,8 +23,7 @@ public class Joker : MonoBehaviour
 
 	public static void Move (Vector2 mouse)
 	{
-		if (GameManager.instance.status == GameManager.Status.InWave)
-		{
+		if (GameManager.instance.status == GameManager.Status.InWave) {
 			preMouse = mouse;
 			return;
 		}
@@ -45,24 +44,20 @@ public class Joker : MonoBehaviour
 		preMouse = mouse;
 	}
 
-    public static void High(Vector2 mouse, float radius, bool handsUp = false)
-    {
-        foreach (var j in jokers)
-        {
-            var vect = new Vector2(j.transform.position.x, j.transform.position.y);
-            if (Vector2.SqrMagnitude(mouse - vect) < moveRadius)
-            {
-                j.radius = radius;
-                j.High(handsUp);
-            }
-            else
-            {
-                j.isRise = false;
-            }
-        }
-    }
+	public static void High (Vector2 mouse, float radius, bool handsUp = false)
+	{
+		foreach (var j in jokers) {
+			var vect = new Vector2 (j.transform.position.x, j.transform.position.y);
+			if (Vector2.SqrMagnitude (mouse - vect) < moveRadius) {
+				j.radius = radius;
+				j.High (handsUp);
+			} else {
+				j.isRise = false;
+			}
+		}
+	}
 
-    public static bool Interrupt (Vector2 mouse, float radius)
+	public static bool Interrupt (Vector2 mouse, float radius)
 	{
 		bool success = false;
 		foreach (var j in jokers) {
@@ -82,9 +77,10 @@ public class Joker : MonoBehaviour
 	#region object
 
 	public Vector2 location {
-		get{
+		get {
 			var pos = transform.localPosition;
-			return new Vector2 (pos.x, pos.y * 2); }
+			return new Vector2 (pos.x, pos.y * 2);
+		}
 		set { 
 			transform.localPosition = new Vector3 (value.x, value.y * 0.5f, value.y);
 		}
@@ -121,16 +117,15 @@ public class Joker : MonoBehaviour
 	{
 		if (!isRise) {
 			isRise = true;
-            var image = GetComponent<Image>();
-            image.color = new Color(0.5f, 1f, 1f, 1);
-            image.DOColor(Color.white, 1).SetAutoKill();
-		    animator.Play ("rise");
-            Person.High(location, radius, high, handsUp);
-            if (handsUp)
-            {
-                HandsUp();
-            }
-        }
+			var image = GetComponent<Image> ();
+			image.color = new Color (0.5f, 1f, 1f, 1);
+			image.DOColor (Color.white, 1).SetAutoKill ();
+			animator.Play ("rise");
+			Person.High (location, radius, high, handsUp);
+			if (handsUp) {
+				HandsUp ();
+			}
+		}
 	}
 
 	public void Interrupt ()
@@ -143,24 +138,24 @@ public class Joker : MonoBehaviour
 
 	public void HandsUp ()
 	{
-        if (wave)
-        {
-            wave.GetComponent<Image>().color = bannerColor();
-            wave.localScale = new Vector3(1, 0, 1);
-            wave.DOScaleY(1, 2f).SetAutoKill(true).OnComplete<Tween>(delegate {
-                wave.DOScaleY(0, 2f).SetAutoKill(true);
-            });
-        }
-    }
+		if (wave) {
+			wave.GetComponent<Image> ().color = bannerColor ();
+			wave.localScale = new Vector3 (1, 0, 1);
+			wave.DOScaleY (1, 2f).SetAutoKill (true).OnComplete<Tween> (delegate {
+				wave.DOScaleY (0, 2f).SetAutoKill (true);
+			});
+		}
+	}
 
-    public Color bannerColor()
-    {
-        var pos = transform.position;
-        var x = pos.x + Screen.width / 2;
-        var y = pos.y + Screen.height / 2;
-        var t2 = GameManager.speechManager.banner.texture;
-        return t2.GetPixel((int)x / Screen.width * t2.width, (int)y / Screen.height * t2.height);
-    }
-    #endregion
+	public Color bannerColor ()
+	{
+		var pos = transform.position;
+		var x = pos.x + Screen.width / 2;
+		var y = pos.y + Screen.height / 2;
+		var t2 = GameManager.speechManager.banner.texture;
+		return t2.GetPixel ((int)x / Screen.width * t2.width, (int)y / Screen.height * t2.height);
+	}
+
+	#endregion
 
 }
